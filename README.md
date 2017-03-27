@@ -26,7 +26,7 @@
 - Random generator of memes
 
 ** Google doc of ideas to keep track of project progress** 
-- [title](https://docs.google.com/document/d/18OMnvcgBvlVS1rK5fUxWYP8MLUX7bqMWWuFzS2qP-Lo/edit?usp=sharing)
+- [comp20-s2017-team16](https://docs.google.com/document/d/18OMnvcgBvlVS1rK5fUxWYP8MLUX7bqMWWuFzS2qP-Lo/edit?usp=sharing)
 
 #Comments by Ming
 * Total win of an idea. Enough said.  Don't disappoint us.
