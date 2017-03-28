@@ -1,13 +1,27 @@
-.hbox {
+html {
+    background-color: #66ccff;
+}
+
+.hbox_top, .hbox_bottom {
     background-color: #00000;
     width: 800px;
     height: 20px;
     border: 4px #fffff;
     padding: 10px;
-    margin: 20px;
+    margin: auto;
+    position: relative;
+    display: block;
 }
 
-.vbox {
+.hbox_top {
+    
+}
+
+.hbox_bottom {
+
+}
+
+.vbox_left, .vbox_right {
     background-color: #00000;
     width: 20px;
     height: 800px;
@@ -15,6 +29,19 @@
     padding: 10px;
     margin: 20px;
     text-orientation: sideways;
+    display: block;
+}
+
+.vbox_left {
+    position: absolute;
+    display: block;
+    left: 20px;
+}
+
+.vbox_right {
+    position: absolute;
+    display: block;
+    right: 20px;
 }
 
 .player_icon {
@@ -25,8 +52,12 @@
 }
 
 .board_middle {
-    height: 550px;
-    width: 850px;
+    height: 650px;
+    width: 900px;
     border: 0;
+    padding: 10px;
+    margin: auto;
+    position: relative;
     display: block;
+    text-align: center;
 }
