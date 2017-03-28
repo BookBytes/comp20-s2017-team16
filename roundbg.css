@@ -1,0 +1,32 @@
+.hbox {
+    background-color: #00000;
+    width: 800px;
+    height: 20px;
+    border: 4px #fffff;
+    padding: 10px;
+    margin: 20px;
+}
+
+.vbox {
+    background-color: #00000;
+    width: 20px;
+    height: 800px;
+    border: 4px #fffff;
+    padding: 10px;
+    margin: 20px;
+    text-orientation: sideways;
+}
+
+.player_icon {
+    height: 80px;
+    width: 80px;
+    border: 0;
+    display: block;
+}
+
+.board_middle {
+    height: 550px;
+    width: 850px;
+    border: 0;
+    display: block;
+}
