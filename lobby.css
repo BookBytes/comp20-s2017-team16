@@ -1,0 +1,36 @@
+html {
+    background-color: #66ccff;
+}
+
+h1 {
+	position: middle;
+}
+
+.setup {
+	position: absolute;
+    display: block;
+}
+
+.player_icon {
+    height: 15px;
+    width: 15px;
+    border: 0;
+    display: block;
+    left: 20px;
+}
+
+.boxed {
+	border: 1px black;
+	background-color: white;
+}
+
+.quotes {
+	position: absolute;
+	display: block;
+}
+
+.computer {
+	float: left;
+	margin: 0 0 20px 20px;
+}
+
