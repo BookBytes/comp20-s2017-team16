@@ -3,10 +3,10 @@ html {
 }
 
 .hbox_top, .hbox_bottom {
-    background-color: #00000;
+    background-color: #ffffff;
     width: 800px;
     height: 20px;
-    border: 4px #fffff;
+    border: 4px #000000;
     padding: 10px;
     margin: auto;
     position: relative;
@@ -22,10 +22,10 @@ html {
 }
 
 .vbox_left, .vbox_right {
-    background-color: #00000;
+    background-color: #ffffff;
     width: 20px;
     height: 800px;
-    border: 4px #fffff;
+    border: 4px #000000;
     padding: 10px;
     margin: 20px;
     text-orientation: sideways;
