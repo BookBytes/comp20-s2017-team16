@@ -3,10 +3,10 @@ html {
 }
 
 .hbox_top, .hbox_bottom {
-    background-color: #00000;
-    width: 800px;
+    background-color: #ffffff;
+    width: 750px;
     height: 20px;
-    border: 4px #fffff;
+    border: 4px #000000;
     padding: 10px;
     margin: auto;
     position: relative;
@@ -21,15 +21,17 @@ html {
 
 }
 
+/* Vertical text from https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation */
 .vbox_left, .vbox_right {
-    background-color: #00000;
+    background-color: #ffffff;
     width: 20px;
-    height: 800px;
-    border: 4px #fffff;
+    height: 750px;
+    border: 4px #000000;
     padding: 10px;
     margin: 20px;
-    text-orientation: sideways;
     display: block;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
 }
 
 .vbox_left {
@@ -51,13 +53,22 @@ html {
     display: block;
 }
 
+/* Vertical centering from http://stackoverflow.com/questions/8865458/how-to-vertically-center-text-with-css */
 .board_middle {
-    height: 650px;
+    height: 790px;
+    line-height: 790px;
     width: 900px;
     border: 0;
-    padding: 10px;
+    padding: 10px 0;
     margin: auto;
     position: relative;
     display: block;
     text-align: center;
 }
+/*
+.board_content {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+*/

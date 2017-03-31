@@ -1,0 +1,28 @@
+html {
+    background-color: #66ccff;
+}
+
+h1 {
+	position: center;
+}
+
+.setup {
+	position: absolute;
+    display: block;
+}
+
+.boxed {
+	border: 1px black;
+	background-color: white;
+}
+
+.quotes {
+	position: absolute;
+	display: block;
+}
+
+.computer {
+	float: left;
+	margin: 0 0 5px 5px;
+}
+
