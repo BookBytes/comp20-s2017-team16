@@ -1,33 +1,32 @@
 html {
     background-color: #66ccff;
     text-align: center;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin:auto;
+
 }
 
 h1 {
 	position: center;
-	margin-right: 10%;
-    margin-left: 10%;
-
 }
 
 .setup {
 	position: absolute;
     display: block;
     text-align: center;
-    margin-right: 10%;
-    margin-left: 10%;
 
+    margin:auto;
+    position:relative;
+    display:block;
 }
 
 .boxed {
 	border: 1px black;
 	background-color: white;
     text-align: center;
-    margin-right: 10%;
-    margin-left: 10%;
-
+    margin:auto;
+    width:30%;
+    position:relative;
+    display:block;
 
 }
 
@@ -35,15 +34,17 @@ h1 {
 	position: absolute;
 	display: block;
     text-align: center;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin:auto;
+    position:relative;
+    display:block;
 
 }
 
 .computer {
     text-align: center;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin:auto;
+    position:relative;
+    display:block;
 
 }
 
