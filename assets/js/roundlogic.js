@@ -31,7 +31,8 @@ function check_input()
 
     console.log(story);
     if (line_num > story.length) {
-        line.innerHTML = "You finished this round!"; 
+        line.innerHTML = "You finished this round!";
+	return;
     }	
 	
     input = document.getElementById("bottom_input").value;
