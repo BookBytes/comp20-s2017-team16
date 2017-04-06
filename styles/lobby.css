@@ -1,28 +1,49 @@
 html {
     background-color: #66ccff;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
 }
 
 h1 {
 	position: center;
+	margin-right: 10%;
+    margin-left: 10%;
+
 }
 
 .setup {
 	position: absolute;
     display: block;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+
 }
 
 .boxed {
 	border: 1px black;
-	background-color: white;
+	background-color: blanchedalmond;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+
+
 }
 
 .quotes {
 	position: absolute;
 	display: block;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+
 }
 
 .computer {
-	float: left;
-	margin: 0 0 5px 5px;
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+
 }
 
