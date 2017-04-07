@@ -4,19 +4,36 @@
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
 
 var full_story = "Once there was a little boy named Jack. He was sent to the market to sell a cow for money for food. However he chose to sell the cow for a magical seed that grew a beanstack to a giant's castle! What did Jack do next? He climbed the beanstack of course!" // for test purposes only
-
+var roundNum;
 var story;
-var line_num = 1;
+var currentLine = 1;
+var totalRounds;
+var maxLine;
+
+function init(){
+    parse_story(); // splits into paragraphs, splits paragraphs into lines
+    // start on the first paragraph on line 1
+    
+}
 
 // into paragraphs and then sentences
 function parse_story()
 {
-    // http://www.jquerywithexample.com/2015/11/split-string-with-multiple-separator-in.html
-    story = full_story.split('.'); /* /.|?|!/); */
+    story = full_story.split("\n")
 
+    // http://www.jquerywithexample.com/2015/11/split-string-with-multiple-separator-in.html
+    // story = full_story.split('.'); /* /.|?|!/); */
+
+    story.forEach(function(item, index, array){
+        story[index] = story[index].split('.');
+    });
+
+    totalRounds = story.length;
     // console.log(story);  // REMOVE THIS LATER
     line = document.getElementById("center");
-    line.innerHTML += story[0];
+    line.innerHTML += story[0][0];
+    roundNum = 0; 
+    maxLine = story[roundNum].length;
 }
 
 function find_wpm(user_time)
@@ -30,18 +47,26 @@ function check_input()
     line = document.getElementById("center");
 
     console.log(story);
-    if (line_num > story.length) {
+    if (roundNum > totalRounds){
+        find_wpm();
+        //find time
+
+    }
+    if (currentLine > maxLine) {
+        roundNum++;
+        maxLine = story[roundNum].length;
         line.innerHTML = "You finished this round!";
+        currentLine = 0;
 	return;
     }	
 	
     input = document.getElementById("bottom_input").value;
     
-    if (input === story[line_num - 1]) {
-	line_num += 1;
-        line.innerHTML = story[line_num - 1];
+    if (input === story[currentLine - 1]) {
+	currentLine += 1;
+        line.innerHTML = story[currentLine - 1];
 	// console.log("Hello");
-        // line = story[line_num];
+        // line = story[currentLine];
     }
 }
 
@@ -51,3 +76,11 @@ function update_textboxes()
     newMsg = document.getElementById("hbox_top").value;
     // TBAdded
 }
+
+// Things to do:
+    // - keep track of user time
+    // - redirect to the proper score page (either end of the round or at the end of a game)
+    // - adding in profile images (player icon and meme lord icon)
+    // - feeding in the stories
+    // - parse into paragraphs
+    // - parse into sentences
