@@ -6,17 +6,17 @@ Week 1 Check-Up
 - added most logic for playing a round line-by-line and a whole game
 - added input text box for user and check for correct input
 - modified css to create workable display for round phase on computer (not mobile)
+- added html/css for displaying post game results
 -
 -
 -
-- 
 
 (add more '-' points as needed anywhere :) )
 
 2. What challenges we encountered:
 
 - figuring out the points at which the front-end js needs to connect to the back-end
--
+- building procedurally generated html pages with js
 -
 -
 -
