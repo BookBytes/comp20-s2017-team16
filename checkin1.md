@@ -7,9 +7,8 @@ Week 1 Check-Up
 - added input text box for user and check for correct input
 - modified css to create workable display for round phase on computer (not mobile)
 - added html/css for displaying post game results
--
--
--
+- added logic for the lobby.html page
+- worked on the relationship between the index.html and lobby.html
 
 (add more '-' points as needed anywhere :) )
 
@@ -17,14 +16,12 @@ Week 1 Check-Up
 
 - figuring out the points at which the front-end js needs to connect to the back-end
 - building procedurally generated html pages with js
--
--
--
+- creating a button that will immediately direct you to the next page
+- how to be pass an entered value to another page (then learned it in class)
 
 3. Goals for next week:
 
 - Choose a back-end server implementation (Heroku, flask, etc.) and start tieing it in
 - Incorporate Google geometry to find distances and mongodb for storing players before match
--
--
--
+- (Building off last point) Initializing geolocation function in lobby.html to find other players (show each found player in loading box)
+- Spitting out sentences at a time for players to type (need to know when each player has finished typing one sentence)
