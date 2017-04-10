@@ -13,14 +13,6 @@ html {
     display: block;
 }
 
-.hbox_top {
-    
-}
-
-.hbox_bottom {
-
-}
-
 /* Vertical text from https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation */
 .vbox_left, .vbox_right {
     background-color: #ffffff;
