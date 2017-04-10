@@ -10,8 +10,6 @@ Week 1 Check-Up
 - added logic for the lobby.html page
 - worked on the relationship between the index.html and lobby.html
 
-(add more '-' points as needed anywhere :) )
-
 2. What challenges we encountered:
 
 - figuring out the points at which the front-end js needs to connect to the back-end
