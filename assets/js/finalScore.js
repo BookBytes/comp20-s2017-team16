@@ -9,7 +9,7 @@
 var $title = $("<h1>", {id: "title", text: "Congratulations!"});
 
 // TODO: get real values
-var userScores = {"user1": 1, "user2": 2, "user3": 3};
+var userScores = {"user1": 1, "user2": 2, "user3": 3, "user4": 4};
 var $scoreList = $("<div>", {id: "scoreList"});
 $.each(userScores, function(key, value) {
     $scoreList.append("<p>User " + key + " scored " + value + "</p>");
