@@ -28,7 +28,7 @@
 **Google doc of ideas to keep track of project progress**
 - [comp20-s2017-team16](https://docs.google.com/document/d/18OMnvcgBvlVS1rK5fUxWYP8MLUX7bqMWWuFzS2qP-Lo/edit?usp=sharing)
 
-**Instructions for Pushing
+**Instructions for Pushing**
 - in order to push to github comp20-s2017-team16 repo -
     git push origin master
 
