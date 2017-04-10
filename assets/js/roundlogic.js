@@ -30,8 +30,8 @@ function parse_story()
     totalRounds = story.length;
     // console.log(story);  // REMOVE THIS LATER
     line = document.getElementById("center");
-    line.innerHTML += story[0][0];
-    roundNum = 0; 
+    roundNum = 0;
+    line.innerHTML += story[roundNum][currentLine - 1];
     maxLine = story[roundNum].length;
 }
 
@@ -56,20 +56,17 @@ function check_input()
         maxLine = story[roundNum].length;
         line.innerHTML = "You finished this round!";
         currentLine = 0;
-	return;
+	    return;
     }	
 	
     input = document.getElementById("bottom_input").value;
     
     if (input === story[currentLine - 1]) {
-	currentLine += 1;
+	    currentLine += 1;
         line.innerHTML = story[currentLine - 1];
-	// console.log("Hello");
-        // line = story[currentLine];
     }
 }
 
-// .keypress
 function update_textboxes()
 {
     // check in with server, get their line number, update it; temp data for now
@@ -86,5 +83,3 @@ function update_textboxes()
     // - redirect to the proper score page (either end of the round or at the end of a game)
     // - adding in profile images (player icon and meme lord icon)
     // - feeding in the stories
-    // - parse into paragraphs
-    // - parse into sentences
