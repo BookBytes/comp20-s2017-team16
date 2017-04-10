@@ -13,7 +13,6 @@ var maxLine;
 function init(){
     parse_story(); // splits into paragraphs, splits paragraphs into lines
     // start on the first paragraph on line 1
-    
 }
 
 // into paragraphs and then sentences
@@ -44,13 +43,13 @@ function find_wpm(user_time)
 
 function check_input()
 {
+
     line = document.getElementById("center");
 
-    console.log(story);
-    if (roundNum > totalRounds){
-        find_wpm();
-        //find time
-
+    if (roundNum > totalRounds) {
+        wpm = find_wpm();
+        // redirect to score page
+        // find time
     }
     if (currentLine > maxLine) {
         roundNum++;
