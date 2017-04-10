@@ -72,10 +72,13 @@ function check_input()
 // .keypress
 function update_textboxes()
 {
-    // check in with server, get their line number, update it
-    newMsg = document.getElementById("hbox_top").value;
-    newMsg.innerHTML = story[0][1];
-    // TBAdded
+    // check in with server, get their line number, update it; temp data for now
+    topPlayer = document.getElementById("hbox_top").value;
+    topPlayer.innerHTML = story[roundNum][currentLine];
+    leftPlayer = document.getElementById("vbox_left").value;
+    leftPlayer.innerHTML = story[roundNum][currentLine];
+    rightPlayer = document.getElementById("vbox_right").value;
+    rightPlayer.innerHTML = story[roundNum][currentLine];
 }
 
 // Things to do:
