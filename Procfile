@@ -1,1 +1,1 @@
-web: node --harmony_array_includes server.js
+web: node server.js

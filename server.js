@@ -34,6 +34,12 @@ var db = MongoClient.connect(mongoUri, function(error, databaseConnection) {
 app.use(express.static(__dirname + '/public'));
 
 
+app.get('/', function(request, response) {
+    response.send("Welcome to the root of m3m3l0rd!!");
+});
+
+
+
 app.listen(app.get('port'), function() {
     console.log('M3m3l0rd is running on port', app.get('port'));
 });
