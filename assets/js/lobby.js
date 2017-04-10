@@ -6,7 +6,7 @@ This file will be in charge of the following three things:
 their usernames in the box
 
 */
-var list = ['Harry Potter', 'Mystery','Fantasy', 'Romance', 'Horror', 'Comedy' ];
+var list = ['Harry Potter', 'Spongebob', 'Mystery','Fantasy', 'Romance', 'Horror', 'Comedy' ];
 
 function getUsername() 
 {
@@ -25,5 +25,5 @@ function putUsername(username)
 function randomize()
 {
 	var item = list[Math.floor(Math.random()*list.length)];
-	document.getElementByID("theme").innerHTML += 'Your game is randomly chosen to be ' + item + 'themed.';
+	document.getElementByID("theme").innerHTML += 'Your game is randomly chosen to be ' + item + '-themed.';
 }
