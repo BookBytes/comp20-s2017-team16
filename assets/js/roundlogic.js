@@ -46,11 +46,9 @@ function check_input()
 {
     line = document.getElementById("center");
 
-    console.log(story);
-    if (roundNum > totalRounds){
+    if (roundNum > totalRounds) {
         find_wpm();
         //find time
-
     }
     if (currentLine > maxLine) {
         roundNum++;
