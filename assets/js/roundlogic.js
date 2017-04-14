@@ -43,7 +43,6 @@ function find_wpm(user_time)
 
 function check_input()
 {
-
     line = document.getElementById("center");
 
     if (roundNum > totalRounds) {
@@ -83,3 +82,4 @@ function update_textboxes()
     // - redirect to the proper score page (either end of the round or at the end of a game)
     // - adding in profile images (player icon and meme lord icon)
     // - feeding in the stories
+    // - meme lord logic
