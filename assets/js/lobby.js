@@ -12,6 +12,8 @@ var myLat = 0;
 var myLng = 0;
 var me = new google.maps.LatLng(myLat, myLng);
 
+// maybe have one big function calling everything else
+
 function getUsername() 
 {
 		var request = new XMLHttpRequest();
@@ -65,5 +67,8 @@ function findCompetitors()
 		}
 	};
 }
+
+// window.onload
+// when window loads, have code start running
 
 
