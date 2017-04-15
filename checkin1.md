@@ -10,8 +10,6 @@ Week 1 Check-Up
 - added logic for the lobby.html page
 - worked on the relationship between the index.html and lobby.html
 
-(add more '-' points as needed anywhere :) )
-
 2. What challenges we encountered:
 
 - figuring out the points at which the front-end js needs to connect to the back-end
@@ -25,3 +23,7 @@ Week 1 Check-Up
 - Incorporate Google geometry to find distances and mongodb for storing players before match
 - (Building off last point) Initializing geolocation function in lobby.html to find other players (show each found player in loading box)
 - Spitting out sentences at a time for players to type (need to know when each player has finished typing one sentence)
+
+#Comments by Ming
+* I've heard good things about Flask
+* MongoDB also has geospatial search

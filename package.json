@@ -1,0 +1,29 @@
+{
+  "name": "m3m3l0rd",
+  "version": "0.0.1",
+  "description": "A speed typing game of memeification",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "mongodb": "latest",
+    "validator": "latest",
+    "jquery": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuftsdev/comp20-s2017-team16"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+    ],
+    "license": "MIT"
+}
