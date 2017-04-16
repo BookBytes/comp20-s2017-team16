@@ -6,21 +6,27 @@ This file will be in charge of the following three things:
 their usernames in the box
 
 */
-var list = ['Harry Potter', 'Spongebob', 'Mystery','Fantasy', 'Romance', 'Horror', 'Comedy' ];
+var list = ['HARRY POTTER', 'SPONGEBOB', 'GOOSEBUMPS', 'STAR WARS', 'STAR TREK', 
+	'HISTORICAL FICTION', 'BREAKING THE FOURTH WALL', 'DUNE SERIES', 'MEMELORD LORE',
+	'NYAN CAT ORIGIN STORY', 'CHUCK NORRIS', 'CANDYLAND', 'GRIMS FAIRY TALES', 
+	'INDIANA JONES', 'FAIRLY ODD PARENTS', 'JIMMY NEUTRON'];
 
 var myLat = 0;
 var myLng = 0;
 var me = new google.maps.LatLng(myLat, myLng);
 
-// maybe have one big function calling everything else
+// when window loads, have code start running
+window.onload = function start_page() {
+	getUsername(); // makes username show up
+	randomize(); // makes random category appear
+	getMyLocation(); // finds nearby competitors
+}
 
 function getUsername() 
 {
-		var request = new XMLHttpRequest();
-		request.open("GET", "index.html", true);
-		//sessionStorage.getItem('username'); 
-		putUsername(document.getElementById("input"));
-		// get the username at the input div in index.html (?)
+		var query = window.location.search.substring(1); // username passed in query
+		var username = query.split('=');
+		putUsername(username[1]);
 }
 
 function putUsername(username)
@@ -31,7 +37,7 @@ function putUsername(username)
 function randomize()
 {
 	var item = list[Math.floor(Math.random()*list.length)];
-	document.getElementByID("theme").innerHTML += 'Your game is randomly chosen to be ' + item + '-themed.';
+	document.getElementById("theme").innerHTML += 'Your game is randomly chosen to be ' + item + '-themed.';
 }
 
 function getMyLocation()
@@ -68,7 +74,6 @@ function findCompetitors()
 	};
 }
 
-// window.onload
-// when window loads, have code start running
+
 
 
