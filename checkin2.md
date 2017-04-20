@@ -6,7 +6,6 @@ Week 2 Check-Up
 - Finalized round and game logic in 'round' associated files
 - Added all playing logic except for memes and server-side code (skeleton present)
 -
--
 
 2. What challenges we encountered:
 
@@ -14,11 +13,12 @@ Week 2 Check-Up
 - how to get other player's inputs
 - figuring out to how randomize meme generation and populate the screen with it (to be implemented soon)
 -
--
--
 
 3. Goals for next week:
 
 - Completing server-side component to web app
 - Incorporating Flask?
--
+- Adding timed aspect to playtime
+- Adding redirects and HTTP requests
+- Adding in imagery for pages
+- Meme lord logic

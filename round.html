@@ -2,7 +2,6 @@
 While round is not complete and time is < 10 minutes, keep playing
 Once done, redirect to score;
 
-add memelord logic
 make different for mobile, comp  -->
 
 <!DOCTYPE html>
@@ -17,13 +16,17 @@ make different for mobile, comp  -->
   </head>
 
   <body onload="init()">
-    <div class="hbox_top" id="P1" value="" onkeypress="update_textboxes()"></div>
-    <div class="vbox_left" id="P2" value="" onkeypress="update_textboxes()"></div>
-    <div class="vbox_right" id="P3" value="" onkeypress="update_textboxes()"></div>
+    <div class="player_icon1"><img src="assets/img/player_icon.png"></img></div>
+    <div class="player_icon2"><img src="assets/img/player_icon.png"></img></div>
+    <div class="hbox_top" id="P1" value=""></div>
+    <div class="vbox_left" id="P2" value=""></div>
+    <div class="vbox_right" id="P3" value=""></div>
     <div class="board_middle" id="center"></div>
-    
+    <div class="player_icon3"><img src="assets/img/player_icon.png"></img></div>
+    <div class="player_icon4"><img src="assets/img/player_icon.png"></img></div>
+    <div class="time_display" id="time"></div>
+
     <!-- see http://www.dummies.com/web-design-development/site-development/how-to-put-text-boxes-in-an-html5-form/ and http://stackoverflow.com/questions/11365686/how-to-get-text-of-an-input-text-box-during-onkeypress -->
-    <div class="hbox_bottom" id="P4"><input type="text" id="bottom_input" name="your_input" size="76" value="" onKeyPress="check_input()" onKeyUp="check_input()"/></div>
-    <div class="time"></div>
+    <div class="hbox_bottom" id="P4"><input type="text" id="bottom_input" name="your_input" size="70" value="" onKeyPress="check_input()" onKeyUp="check_input()"/></div>
   </body>
 </html>

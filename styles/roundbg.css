@@ -4,8 +4,8 @@ html {
 
 .hbox_top, .hbox_bottom {
     background-color: #ffffff;
-    width: 750px;
-    height: 20px;
+    width: 700px;
+    height: 25px;
     border: 4px #000000;
     padding: 10px;
     margin: auto;
@@ -16,8 +16,8 @@ html {
 /* Vertical text from https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation */
 .vbox_left, .vbox_right {
     background-color: #ffffff;
-    width: 20px;
-    height: 750px;
+    width: 25px;
+    height: 700px;
     border: 4px #000000;
     padding: 10px;
     margin: 20px;
@@ -39,16 +39,26 @@ html {
 }
 
 .player_icon {
-    height: 80px;
-    width: 80px;
+    height: 0px;
+    width: 70px;
     border: 0;
     display: block;
 }
 
+.player_icon1, .player_icon3 {
+    position: absolute;
+    left: 25px;
+}
+
+.player_icon2, .player_icon4 {
+    position: absolute;
+    right: 20px;
+}
+
 /* Vertical centering from http://stackoverflow.com/questions/8865458/how-to-vertically-center-text-with-css */
 .board_middle {
-    height: 790px;
-    line-height: 790px;
+    height: 710px;
+    line-height: 780px;
     width: 900px;
     border: 0;
     padding: 10px 0;
@@ -57,16 +67,18 @@ html {
     display: block;
     text-align: center;
 }
-/*
-.board_content {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
+
+.time_display {
+    display: block;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
 }
-*/
+
 
 /* See http://stackoverflow.com/questions/37027575/make-text-unselectable-and-uncopyable-webkit-while-surrounded-by-copyable-text */
-.board_middle {
+.board_middle, .hbox_top, .vbox_left, .vbox_right {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
