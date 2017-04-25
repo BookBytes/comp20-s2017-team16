@@ -13,3 +13,7 @@ Week 3 Check-up
 3. Goals for next week:
 
 - meme lord logic
+
+# Comments by Ming
+* "Adding timed aspect to playtime" => oh good, you solved this problem.
+* "parsing regex phrases" => always ugly...
