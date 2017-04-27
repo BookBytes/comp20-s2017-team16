@@ -6,7 +6,37 @@
  * https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
  */
 
+var express = require('express');
+var assert = require('assert');
+var app = express();
+// setup mongo
+var mongoUri = process.env.MONGODB_URI ||
+            process.env.MONGOLAB_URI ||
+            process.env.MONGOHQ_URL ||
+            'mongodb://teddy:heroku@ds139959.mlab.com:39959/heroku_r1qgwh3n';
+var MongoClient = require('mongodb').MongoClient, format = require('util').format;
+var db = MongoClient.connect(mongoUri, function(error, databaseConnection) {
+ assert.equal(null, error);
+ db = databaseConnection;
+});
+
+
 // --------------User Data-------------- \\
+var getData = function() {
+    db.collection('round', function(error, collection) {
+        if (error) {
+            $('body').prepend($('<p>', {id: "error", text: error}));
+        }
+        collection.find().toArray(function(error, cursor) {
+            if (error) {
+                $('body').prepend($('<p>', {id: "error", text: error}));
+            }
+            // TODO -- EXTRACT DATA FROM ROUND DB
+            // ROUND COLLECTION = Username | round number | score | OTHERS?
+        });
+    });
+}
+
 // TODO: get real values
 var userScores = {"Teddy": 1, "Had": 2, "Some": 3, "Berries": 4};
 var userNames = [
