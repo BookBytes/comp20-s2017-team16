@@ -34,7 +34,7 @@ app.use(express.static(__dirname + '/assets'));
 
 // See https://devcenter.heroku.com/articles/mean-apps-restful-api#create-a-restful-api-server-with-node-js-and-express
 function handleError(response, reason, message, code) {
-  response.status(code || 500).json({"error": message});
+    response.status(code || 500).json({"error": message});
 }
 
 app.get('/', function(request, response) {
@@ -51,6 +51,47 @@ app.get('/lobby', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     response.sendFile(path.join(__dirname + '/public/lobby.html'));
+});
+
+app.get('/ready', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    // are there enough people close by?
+    db.collection('users', function(err, collection) {
+        if (!err) {
+            collection.find().toArray(function(err, results) {
+                if (results.length >= 4) {
+                  response.send(true);
+                }
+                else {
+                  response.send(false);
+                }
+            });
+        }
+        else {
+            response.send(false);
+        }
+    });
+});
+
+app.get('/goto', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    db.collection('users', function(err, collection) {
+        if (err) {
+            collection.find().toArray(function(err, results) {
+                results.sort(); // is this sorting so that the closest members are together?
+                response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
+            });
+        }
+        else {
+            response.send({});
+        }
+    });
 });
 
 /*app.post('/lobby', function(request, response) {

@@ -6,18 +6,42 @@
  * https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
  */
 
-var $title = $("<h1>", {id: "title", text: "Congratulations!"});
-
+// --------------User Data-------------- \\
 // TODO: get real values
-var userScores = {"user1": 1, "user2": 2, "user3": 3, "user4": 4};
+var userScores = {"Teddy": 1, "Had": 2, "Some": 3, "Berries": 4};
+var userNames = [
+    Object.keys(userScores)[0],
+    Object.keys(userScores)[1],
+    Object.keys(userScores)[2],
+    Object.keys(userScores)[3]
+];
+var roundNumber = 1;
+
+
+
+var $title = $("<h1>", {id: "title", text: "Congratulations!"});
 var $scoreList = $("<div>", {id: "scoreList"});
 $.each(userScores, function(key, value) {
     $scoreList.append("<p>User " + key + " scored " + value + "</p>");
 });
+// build chart url
+var userNamesURL = "";
+var userScoresURL = "";
+$.each(userScores, function(key, value) {
+    userNamesURL += key + "|";
+    userScoresURL += value + ",";
+});
+// remove last special char from string
+userNamesURL = userNamesURL.slice(0, -1);
+userScoresURL = userScoresURL.slice(0, -1);
+var $chart = $("<img>", {
+    id: "chart",
+    src: "https://chart.googleapis.com/chart?cht=bvs&chd=t:" +
+         userScoresURL + "&chs=150x100&chl=" + userNamesURL
+});
 
 $(document).ready(function() {
-    // TODO
-    console.log("INSIDE SCORE JS");
     $("body").append($title);
     $("body").append($scoreList);
+    $("body").append($chart);
 });

@@ -30,9 +30,11 @@ window.onclick = function render_user_info() {
 
 	// send username, myLat and myLng some way to database
 	// do you need to do app.post to lobby??
-	db.collection('user_table', function(error, coll) {
+	/*db.collection('user_table', function(error, coll) {
 		coll.insert({"username" : username, "lat" : myLat, "lng" : myLng});
-	}); 
+	}); */ 
+
+	$.post("https://m3m3l0rd.herokuapp.com/geolocation", '{"username" : username, "lat" : myLat, "lng" : myLng}');
 
 	// go to next page
 	window.location.href = 'www.m3m3l0rd.herokuapp.com/lobby';

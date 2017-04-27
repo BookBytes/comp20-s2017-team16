@@ -56,24 +56,23 @@ function check_input()
     }
 
     // adapted from http://stackoverflow.com/questions/9224773/js-check-if-date-is-less-than-1-hour-ago
-    // problem: what if the user doesn't finish? Then their W in WPM is different... Maybe remove this case entirely.
     else if ((newTimer - timer) > (1000 * 60 * 10)) {
         line = document.getElementById("center");
 	    line.innerHTML = "Out of time.";
-	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
-        $.post("https://m3m3l0rd.herokuapp.com/score", wpm);
+	    // wpm = find_wpm((newTimer - timer) * 1000 * 60);
+        $.get("https://m3m3l0rd.herokuapp.com/score?wpm=INVALID");
     }
 
     else if (currentLine > maxLine) {
         line.innerHTML = "You finished this round!";
 	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
-	    $.post("https://m3m3l0rd.herokuapp.com/score", wpm);
+	    $.get("https://m3m3l0rd.herokuapp.com/score?wpm=" + wpm);
         currentLine = -1;
 	    return;
     }
 
     time = document.getElementById("time");
-    time.innerHTML = ((newTimer - timer) / 1000) + " seconds";
+    time.innerHTML = ((newTimer - timer) / 1000).toFixed(1) + " seconds";
 	
     update_textboxes();
     input = document.getElementById("bottom_input").value;
@@ -87,17 +86,23 @@ function check_input()
 
 function update_textboxes()
 {
-    P1progress = $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P1", function () { });
-    topPlayer = document.getElementById("P1");
-    topPlayer.innerHTML = story[currentLine - 1];
+    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P1", 
+        function (P1progress) { 
+            topPlayer = document.getElementById("P1");
+            topPlayer.innerHTML = story[P1progress];});
+            // topPlayer.innerHTML = story[currentLine - 1];});
     
-    P2progress = $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P2", function () { });
-    leftPlayer = document.getElementById("P2");
-    leftPlayer.innerHTML = story[currentLine - 1];
-    
-    P3progress = $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P3", function () { });
-    rightPlayer = document.getElementById("P3");
-    rightPlayer.innerHTML = story[currentLine - 1];
+    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P2", 
+    function (P2progress) { 
+        LeftPlayer = document.getElementById("P2");
+        LeftPlayer.innerHTML = story[P2progress];});
+        // topPlayer.innerHTML = story[currentLine - 1];});
+
+    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P3", 
+    function (P3progress) { 
+        RightPlayer = document.getElementById("P3");
+        RightPlayer.innerHTML = story[P3progress];});
+        // topPlayer.innerHTML = story[currentLine - 1];});
 }
 
 // Things to do:
