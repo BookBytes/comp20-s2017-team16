@@ -52,7 +52,7 @@ function randomize()
 function findCompetitors()
 {
 	$.get("https://m3m3l0rd.herokuapp.com/ready", function (data) {
-		if (data.ready == true) {
+		if (data == true) {
 			$.get("https://m3m3l0rd.herokuapp.com/goto", function(response) {
 				window.location.href = 'https://m3m3l0rd.herokuapp.com/round?players=' + response;
 			});
