@@ -22,6 +22,7 @@ window.onload = function start_page() {
 	getMyLocation(); // finds nearby competitors
 }
 
+// http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
 function getUsername() 
 {
 		var query = window.location.search.substring(1); // username passed in query

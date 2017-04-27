@@ -16,6 +16,8 @@ $.each(userScores, function(key, value) {
 });
 
 $(document).ready(function() {
+    // TODO
+    console.log("INSIDE SCORE JS");
     $("body").append($title);
     $("body").append($scoreList);
 });

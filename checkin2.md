@@ -5,6 +5,7 @@ Week 2 Check-Up
 - Set-up server on Heroku in order to deploy the app
 - Finalized round and game logic in 'round' associated files
 - Added all playing logic except for memes and server-side code (skeleton present)
+- Setup database on heroku
 -
 
 2. What challenges we encountered:
