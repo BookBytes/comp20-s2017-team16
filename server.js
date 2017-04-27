@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 // See documentation at https://github.com/chriso/validator.js
 var validator = require('validator');
 
+var path = require('path');
+
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -28,7 +30,7 @@ var db = MongoClient.connect(mongoUri, function(error, databaseConnection) {
 });
 
 // serve static content
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/assets'));
 
 // See https://devcenter.heroku.com/articles/mean-apps-restful-api#create-a-restful-api-server-with-node-js-and-express
 function handleError(response, reason, message, code) {
@@ -40,7 +42,7 @@ app.get('/', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    response.send(index.html);
+    response.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 app.get('/lobby', function(request, response) {
@@ -48,7 +50,7 @@ app.get('/lobby', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    response.send(lobby.html);
+    response.sendFile(path.join(__dirname + '/public/lobby.html'));
 });
 
 app.get('/round', function(request, response) {
@@ -56,7 +58,7 @@ app.get('/round', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    response.send(round.html);
+    response.send(path.join(__dirname + '/public/round.html'));
 });
 
 app.get('/score', function(request, response) {
@@ -64,7 +66,7 @@ app.get('/score', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    response.send(score.html);
+    response.sendFile(path.join(__dirname + '/public/score.html'));
 });
 
 app.listen(process.env.PORT || 5000);
