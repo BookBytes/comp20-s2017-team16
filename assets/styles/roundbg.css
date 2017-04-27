@@ -2,25 +2,39 @@ html {
     background-color: #66ccff;
 }
 
-.hbox_top, .hbox_bottom {
+.hbox_top {
     background-color: #ffffff;
-    width: 700px;
-    height: 25px;
-    border: 4px #000000;
-    padding: 10px;
+    width: 75%;
+    height: 5%;
+    border: 1% #000000;
+    padding: 1%;
     margin: auto;
     position: relative;
+    display: block;
+}
+
+.hbox_bottom {
+    background-color: #ffffff;
+    width: 75%;
+    height: 5%;
+    border: 1% #000000;
+    padding: 1%;
+    margin: auto;
+    display: block;
+    position: absolute;
+    bottom: 5%;
+    left: 12%;
     display: block;
 }
 
 /* Vertical text from https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation */
 .vbox_left, .vbox_right {
     background-color: #ffffff;
-    width: 25px;
-    height: 700px;
-    border: 4px #000000;
-    padding: 10px;
-    margin: 20px;
+    width: 1.5%;
+    height: 70%;
+    border: 1% #000000;
+    padding: 1%;
+    margin: 5%;
     display: block;
     writing-mode: vertical-rl;
     text-orientation: sideways;
@@ -29,39 +43,53 @@ html {
 .vbox_left {
     position: absolute;
     display: block;
-    left: 20px;
+    left: 1%;
 }
 
 .vbox_right {
     position: absolute;
     display: block;
-    right: 20px;
+    right: 5%;
 }
 
 .player_icon {
-    height: 0px;
-    width: 70px;
+    height: 5%;
+    width: 5%;
     border: 0;
     display: block;
 }
 
-.player_icon1, .player_icon3 {
+.player_icon1 {
     position: absolute;
-    left: 25px;
+    top: 0;
+    left: 5%;
 }
 
-.player_icon2, .player_icon4 {
+.player_icon3 {
     position: absolute;
-    right: 20px;
+    bottom: 5%;
+    left: 5%
+}
+
+.player_icon2 {
+    position: absolute;
+    top: 0;
+    right: 5%;
+}
+
+.player_icon4 {
+    position: absolute;
+    right: 5%;
+    bottom: 5%
 }
 
 /* Vertical centering from http://stackoverflow.com/questions/8865458/how-to-vertically-center-text-with-css */
 .board_middle {
-    height: 710px;
+    height: 3%;
     line-height: 780px;
-    width: 900px;
+    width: 75%;
     border: 0;
-    padding: 10px 0;
+    padding: 10px;
     margin: auto;
     position: relative;
     display: block;
@@ -71,7 +99,9 @@ html {
 .time_display {
     display: block;
     margin: auto;
-    position: relative;
+    position: absolute;
+    bottom: 12%;
+    left: 45%;
     text-align: center;
     line-height: 50px;
 }
