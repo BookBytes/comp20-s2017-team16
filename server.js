@@ -53,6 +53,15 @@ app.get('/lobby', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/lobby.html'));
 });
 
+/*app.post('/lobby', function(request, response) {
+  response.set('Content-Type', 'text/html');
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+  response.sendFile(path.join(__dirname + 'public/lobby.html'));
+
+}); */
+
 app.get('/round', function(request, response) {
 	response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
@@ -68,5 +77,7 @@ app.get('/score', function(request, response) {
 
     response.sendFile(path.join(__dirname + '/public/score.html'));
 });
+
+
 
 app.listen(process.env.PORT || 5000);
