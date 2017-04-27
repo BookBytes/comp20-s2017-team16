@@ -7,14 +7,14 @@ Once found, redirect to round
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="styles/lobby.css"/>
+	<link rel="stylesheet" href="../assets/styles/lobby.css"/>
     <title>MemeLord</title>
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
     <meta charset="utf-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/
+    <script src="https://maps.googleapis.com/maps/api/
 									js?sensor=false&libraries=geometry"></script>
-    <script type="text/javascript" src="assets/js/lobby.js"></script>
+    <script type="text/javascript" src="../assets/js/lobby.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,8 @@ Once found, redirect to round
 		<hr>
 
 		<h3>. . . finding the three closest people near you . . .</h3>
-		<div class="boxed">
+		<!-- loading the found users could be kind of unnecessary (?)
+		<div class="boxed"> 
 			<h3><u>Competitors</u></h3>
 			<ul>
 				<li>user1</li>
@@ -38,13 +39,14 @@ Once found, redirect to round
 				<li>user3</li>
 			</ul>
 
-		</div>
+		</div> -->
+		
 		<!--when the back-end is created, the contents of this box should/could be
 		the other users nearby. They appear when found/pinged in real time -->
 
 		<!-- computer img and fun computer facts -->
 		<div class="quotes">
-			<div class="computer"><img src="assets/img/computer.png"></div>
+			<div class="computer"><img src="../assets/img/computer.png"></div>
 			<h3><i>
 			<p>When you hit space bar, 600,000 people in the world just did the same thing
 			</p>
