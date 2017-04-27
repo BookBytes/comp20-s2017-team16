@@ -1,4 +1,4 @@
-html {
+body {
     background-color: #66ccff;
     text-align: center;
     margin:auto;
@@ -11,4 +11,11 @@ html {
 
 #scoreList {
     text-align: center;
+}
+
+#chart {
+    height: 300px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
