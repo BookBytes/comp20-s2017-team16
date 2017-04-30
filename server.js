@@ -58,15 +58,16 @@ app.post('/geolocation', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    var username = request.body.username;
+    var curr_user = request.body.username;
     console.log("username: " + username);
-    var lat = request.body.lat;
-    var lng = request.body.lng;
-    lat = parseFloat(lat);
-    lng = parseFloat(lng);
+    var myLat = request.body.lat;
+    var myLng = request.body.lng;
+    myLat = parseFloat(lat);
+    myLng = parseFloat(lng);
 
+    console.log("In POST for geolocation");
     db.collection('users', function(error, coll) {
-        coll.insert( { "username": username, "lat" : lat, "lng" : lng }, function(error, saved) {
+        coll.insert( { username: curr_user, lat : myLat, lng : myLng }, function(error, saved) {
             if (error) {
                 response.send({"error": "Something is wrong with the data!"});
             }
@@ -79,8 +80,6 @@ app.post('/geolocation', function(request, response) {
             }
         });
     });
-
-
 });
 
 app.get('/geolocation', function(request, response) {
