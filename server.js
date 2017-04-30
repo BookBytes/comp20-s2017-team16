@@ -50,6 +50,7 @@ app.get('/lobby', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
+    console.log("should be sending you to lobby");
     response.sendFile(path.join(__dirname + '/public/lobby.html'));
 });
 
@@ -59,7 +60,6 @@ app.post('/geolocation', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     var curr_user = request.body.username;
-    console.log("username: " + username);
     var myLat = request.body.lat;
     var myLng = request.body.lng;
     myLat = parseFloat(lat);
@@ -88,9 +88,8 @@ app.get('/geolocation', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     var user = request.query.username;
-
     db.collection('users', function(error, coll) {
-        if (err) {
+        if (error) {
             response.send("Something went wrong!");
         }
         else {

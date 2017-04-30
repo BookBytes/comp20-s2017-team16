@@ -27,14 +27,11 @@ window.onload = function start_page() {
 // http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
 function getData() 
 {
-		/*var query = window.location.search.substring(1); // username passed in query
-		var username = query.split('=');
-		putUsername(username[1]);*/
 		$.get("https://m3m3l0rd.herokuapp.com/geolocation", function (data) {
-			myLat = data.lat;
-			myLng = data.lat;
+			myLat = data.body.lat;
+			myLng = data.body.lat;
 			me = new google.maps.LatLng(myLat, myLng);
-			username = data.username;
+			username = data.body.username;
 		});
 }
 
