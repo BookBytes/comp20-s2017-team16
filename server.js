@@ -177,7 +177,7 @@ app.post('/game_Table', function (request, response){
     }
 
     if((!username) || isNan(roundNum) || isNan(sentenceNum) || !(roundNum) || !(sentenceNum) || isNan(wpm) || !(wpm)){
-        response.send("error":"Something is wrong with the data");
+        response.send("Something is wrong with the data");
     }
 
     else {
@@ -198,8 +198,9 @@ app.post('/stories_Table', function (request, response){
         "paragraph":paragraph
     }
 
-    if(!(storyName) || !(paragraph) || !(paragraphNum) || isNan()) // working here
-});
+    if(!(storyName) || !(paragraph) || !(paragraphNum) || isNan()) {
+     }
+ });
 
 app.get('/memelord', function(request, response) {
     response.set('Content-Type', 'text/html');
