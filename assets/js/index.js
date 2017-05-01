@@ -15,8 +15,12 @@ function render_user_info() {
 	console.log("username is: " + curr_user);
 
 	$.post("/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
+<<<<<<< HEAD
 	$.get("/lobby", {"username": curr_user});
 	return false;
+=======
+	$.get("/lobby");
+>>>>>>> 6fa36538bf68a67bc8246b944287c2a99997f609
 	// go to next page
 	//window.location.href = "https://www.m3m3l0rd.herokuapp.com/lobby?username=" + curr_user;
 }
