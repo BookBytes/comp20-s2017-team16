@@ -80,8 +80,13 @@ function check_input()
     if (input === story[currentLine - 1]) {
         currentLine++;
         line.innerHTML = story[currentLine - 1];
-        input = '';
+        // input = '';
+        clear_textbox();
     }
+}
+
+function clear_textbox(){
+    document.getElementById("bottom_input").value = "";
 }
 
 function update_textboxes()

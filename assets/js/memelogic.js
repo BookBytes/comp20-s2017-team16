@@ -36,7 +36,7 @@ function sendMeme (randNum) = {
     var img = $('<img>', {id: "image", src: "/img/meme"+randNum, alt: "memeattack!"});
     $("body").append(img);
     // wait 3 seconds
-    $("body").remove(img);
+    $("body").remove();
 }
 
 // $("ctrlKey").keyup(function(){
