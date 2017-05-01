@@ -19,7 +19,7 @@ var me;
 // when window loads, have code start running
 function start_page() {
 	getData(); // makes username show up
-	console.log("user: " + username);
+	console.log("username is "+ username +" lat is "+myLat+" lng is " + myLng);
 	putUsername();
 	randomize(); // makes random category appear
 	findCompetitors(); // finds nearby competitors

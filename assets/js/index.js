@@ -26,7 +26,9 @@ app.use(express.static(__dirname + '/public'));
 
 function render_user_info() {
 	getMyLocation();
+	console.log("my location is lat/lng" + myLat + " " + myLng);
 	getUsername();
+	console.log("username is" + curr_user);
 
 	$.post("https://m3m3l0rd.herokuapp.com/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
 	$.get("https://m3m3l0rd.herokuapp.com/lobby?username=" + curr_user);
