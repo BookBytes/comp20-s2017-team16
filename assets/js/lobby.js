@@ -5,7 +5,8 @@ This file will be in charge of the following three things:
 - Finding the three closest players (through geolocation) 
 
 */
-var list = ['4th Wall Break', 'Dumb Guitar Solo', 'Office-Theme Rick Roll', 'Short-Lined'];
+var list = ['4th Wall Break', 'Dumb Guitar Solo', 'Office-Theme Rick Roll', 
+	'Short-Lined', 'The New Food', 'The Patient Cat', 'Borrowing A Match'];
 /*['HARRY POTTER', 'SPONGEBOB', 'GOOSEBUMPS', 'STAR WARS', 'STAR TREK', 
 	'HISTORICAL FICTION', 'BREAKING THE FOURTH WALL', 'DUNE SERIES', 'MEMELORD LORE',
 	'NYAN CAT ORIGIN STORY', 'CHUCK NORRIS', 'CANDYLAND', 'GRIMS FAIRY TALES', 
@@ -44,7 +45,7 @@ function putUsername()
 function randomize()
 {
 	var item = list[Math.floor(Math.random()*list.length)];
-	document.getElementById("theme").innerHTML += 'Your game is randomly chosen to be ' + item + '-themed.';
+	document.getElementById("theme").innerHTML += 'We randomly chose a story for your game! It is called: ' + item ;
 }
 
 function findCompetitors()
