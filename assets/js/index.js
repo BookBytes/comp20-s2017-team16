@@ -24,21 +24,14 @@ app.use(function(req, res, next) {
 
 app.use(express.static(__dirname + '/public'));
 
-window.onclick = function render_user_info() {
-	console.log("should be sending my location and username");
+function render_user_info() {
 	getMyLocation();
 	getUsername();
-
-	// send username, myLat and myLng some way to database
-	// do you need to do app.post to lobby??
-	/*db.collection('user_table', function(error, coll) {
-		coll.insert({"username" : username, "lat" : myLat, "lng" : myLng});
-	}); */ 
 
 	$.post("https://m3m3l0rd.herokuapp.com/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
 
 	// go to next page
-	window.location.href = "https://www.m3m3l0rd.herokuapp.com/lobby";
+	window.location = "https://www.m3m3l0rd.herokuapp.com/lobby";
 }
 
 function getMyLocation()

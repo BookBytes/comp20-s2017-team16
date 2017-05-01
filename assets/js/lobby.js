@@ -13,12 +13,13 @@ var list = ['4th Wall Break', 'Dumb Guitar Solo', 'Office-Theme Rick Roll', 'Sho
 
 var myLat = 0;
 var myLng = 0;
-var username = "";
+var username = "nothing yet";
 var me; 
 
 // when window loads, have code start running
 window.onload = function start_page() {
 	getData(); // makes username show up
+	console.log("user: " + username);
 	putUsername();
 	randomize(); // makes random category appear
 	findCompetitors(); // finds nearby competitors
@@ -28,10 +29,11 @@ window.onload = function start_page() {
 function getData() 
 {
 		$.get("https://m3m3l0rd.herokuapp.com/geolocation", function (data) {
-			myLat = toFloat(data.lat);
-			myLng = toFloat(data.lat);
-			me = new google.maps.LatLng(myLat, myLng);
-			username = data.username;
+			//myLat = toFloat(data.lat);
+			//myLng = toFloat(data.lng);
+			//me = new google.maps.LatLng(myLat, myLng);
+			//username = data.username;
+			username = "inside get request"
 		});
 }
 

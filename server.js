@@ -63,8 +63,8 @@ app.post('/geolocation', function(request, response) {
     var curr_user = request.body.username;
     var myLat = request.body.lat;
     var myLng = request.body.lng;
-    myLat = parseFloat(lat);
-    myLng = parseFloat(lng);
+    myLat = parseFloat(myLat);
+    myLng = parseFloat(myLng);
 
     console.log("In POST for geolocation");
     db.collection('users', function(error, coll) {
