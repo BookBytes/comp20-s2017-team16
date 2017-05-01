@@ -10,12 +10,13 @@ var curr_user = "";
 
 function render_user_info() {
 	getMyLocation();
-	console.log("my location is lat/lng" + myLat + " " + myLng);
+	console.log("my location is lat/lng " + myLat + " " + myLng);
 	getUsername();
-	console.log("username is" + curr_user);
+	console.log("username is: " + curr_user);
 
 	$.post("/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
-	$.get("/lobby?username=" + curr_user);
+	$.get("/lobby", {"username": curr_user});
+	return false;
 	// go to next page
 	//window.location.href = "https://www.m3m3l0rd.herokuapp.com/lobby?username=" + curr_user;
 }
@@ -35,7 +36,5 @@ function getMyLocation()
 
 function getUsername()
 {
-	curr_user = document.getElementById('curr_user').id;
+	curr_user = document.getElementById("usernameBox").value;
 }
-
-

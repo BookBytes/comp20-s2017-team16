@@ -9,6 +9,7 @@ Redirect to lobby-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="/styles/index.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
 </head>
 <body>
@@ -19,10 +20,10 @@ Redirect to lobby-->
         <h2>What will be your unique username?
         <!-- http://stackoverflow.com/questions/2906582/how-to-create-an-html-
                     button-that-acts-like-a-link-->
-        <form>
-            <input type="text" name="curr_user" id="username" />
-            <input type="submit" value="Submit" onclick="render_user_info();" />
-        </form>
+		<form onsubmit="return render_user_info();">
+	        <input type="text" name="curr_user" id="usernameBox" />
+	        <input type="submit" value="Submit" />
+		</form>
         </h2>
 
         <hr>

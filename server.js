@@ -46,13 +46,14 @@ app.get('/', function(request, response) {
 });
 
 app.get('/lobby', function(request, response) {
+    // TODO
+    console.log("INSIDE LOBBY GET");
 	response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     // console.log("should be sending you to lobby");
-    // response.sendFile(path.join(__dirname + '/public/lobby.html'));
-    response.sendFile(path.join(__dirname + 'public/lobby.html'));
+    response.sendFile(path.join(__dirname + '/public/lobby.html'));
 });
 
 app.post('/geolocation', function(request, response) {
