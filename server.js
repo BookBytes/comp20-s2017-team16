@@ -62,25 +62,11 @@ app.post('/geolocation', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     var curr_user = request.body.username;
-    var myLat = request.body.lat;
-    var myLng = request.body.lng;
-    myLat = parseFloat(myLat);
-    myLng = parseFloat(myLng);
+    var myLat = parseFloat(request.body.lat);
+    var myLng = parseFloat(request.body.lng);
 
-    console.log("In POST for geolocation");
     db.collection('users', function(error, coll) {
-        coll.insert( { username: curr_user, lat : myLat, lng : myLng }, function(error, saved) {
-            if (error) {
-                response.send({"error": "Something is wrong with the data!"});
-            }
-            else {
-                db.collection('users', function(error, coll) {
-                    coll.find().toArray(function(error, results) {
-                        response.send({results});
-                    });
-                });
-            }
-        });
+        coll.insert( { username: curr_user, lat : myLat, lng : myLng });
     });
 });
 
@@ -90,15 +76,10 @@ app.get('/geolocation', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     var user = request.query.username;
-    db.collection('users', function(error, coll) {
-        if (error) {
-            response.send("Something went wrong!");
-        }
-        else {
-            coll.find({username : user}).toArray(function(err, results) {
-                response.send({results});
-            });
-        }
+    db.collection('users', function(error, collection) {
+        collection.find({"username" : user}).toArray(function(err, results) {
+            response.send({results});
+        });
     });
 });
 
