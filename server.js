@@ -49,7 +49,54 @@ app.get('/lobby', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
+    console.log("should be sending you to lobby");
     response.sendFile(path.join(__dirname + '/public/lobby.html'));
+});
+
+app.post('/geolocation', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    var curr_user = request.body.username;
+    var myLat = request.body.lat;
+    var myLng = request.body.lng;
+    myLat = parseFloat(lat);
+    myLng = parseFloat(lng);
+
+    console.log("In POST for geolocation");
+    db.collection('users', function(error, coll) {
+        coll.insert( { username: curr_user, lat : myLat, lng : myLng }, function(error, saved) {
+            if (error) {
+                response.send({"error": "Something is wrong with the data!"});
+            }
+            else {
+                db.collection('users', function(error, coll) {
+                    coll.find().toArray(function(error, results) {
+                        response.send(results);
+                    });
+                });
+            }
+        });
+    });
+});
+
+app.get('/geolocation', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    var user = request.query.username;
+    db.collection('users', function(error, coll) {
+        if (error) {
+            response.send("Something went wrong!");
+        }
+        else {
+            coll.find({username : user}).toArray(function(err, results) {
+                response.send(results);
+            });
+        }
+    });
 });
 
 app.get('/ready', function(request, response) {
@@ -59,7 +106,10 @@ app.get('/ready', function(request, response) {
 
     // are there enough people close by?
     db.collection('users', function(err, collection) {
-        if (!err) {
+        if (err) {
+            response.send(false);
+        }
+        else {
             collection.find().toArray(function(err, results) {
                 if (results.length >= 4) {
                   response.send(true);
@@ -68,9 +118,6 @@ app.get('/ready', function(request, response) {
                   response.send(false);
                 }
             });
-        }
-        else {
-            response.send(false);
         }
     });
 });
