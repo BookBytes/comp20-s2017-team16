@@ -2,30 +2,38 @@
 /* uses listeners to update user typed data for all 4 users and presents it on screen */
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
 
-var paragraph = "Behold... He climbed the beanstalk of course!" // for test purposes only
-var story;
+var story; // = "Behold... He climbed the beanstalk of course!" // for test purposes only
+var paragraph;
 var currentLine = 1;
 var maxLine;
 var timer;
 
 function init()
 {
-    parse_story(); // splits paragraph into lines
+    get_story(); // splits paragraph into lines
     timer = Date.now();
     time = document.getElementById("time");
     time.innerHTML = 0 + " seconds";
     update_textboxes();
 }
 
+function get_story()
+{
+    $.get('/stories_Table', function(data) {
+        story = data.story;
+    });
+    parse_story();
+}
+
 function parse_story()
 {
     // see http://stackoverflow.com/questions/11761563/javascript-regexp-for-splitting-text-into-sentences-and-keeping-the-delimiter
-    story = paragraph.match( /[^\.!\?]+[\.!\?]+/g );
+    paragraph = story.match( /[^\.!\?]+[\.!\?]+/g );
     remove_leading_spaces();
 
     line = document.getElementById("center");
-    line.innerHTML += story[currentLine - 1];
-    maxLine = story.length;
+    line.innerHTML += paragraph[currentLine - 1];
+    maxLine = paragraph.length;
 }
 
 // see http://stackoverflow.com/questions/4503656/in-java-removing-first-character-of-a-string
