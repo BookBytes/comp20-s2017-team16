@@ -28,10 +28,10 @@ window.onload = function start_page() {
 function getData() 
 {
 		$.get("https://m3m3l0rd.herokuapp.com/geolocation", function (data) {
-			myLat = data.body.lat;
-			myLng = data.body.lat;
+			myLat = toFloat(data.lat);
+			myLng = toFloat(data.lat);
 			me = new google.maps.LatLng(myLat, myLng);
-			username = data.body.username;
+			username = data.username;
 		});
 }
 

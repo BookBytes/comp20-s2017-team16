@@ -42,7 +42,8 @@ app.get('/', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    response.sendFile(path.join(__dirname + '/public/index.html'));
+    // response.sendFile(path.join(__dirname + '/public/index.html'));
+    response.send('/public/index.html');
 });
 
 app.get('/lobby', function(request, response) {
@@ -50,8 +51,9 @@ app.get('/lobby', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    console.log("should be sending you to lobby");
-    response.sendFile(path.join(__dirname + '/public/lobby.html'));
+    // console.log("should be sending you to lobby");
+    // response.sendFile(path.join(__dirname + '/public/lobby.html'));
+    response.send('public/lobby.html');
 });
 
 app.post('/geolocation', function(request, response) {
@@ -156,6 +158,19 @@ app.get('/round', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     response.send(path.join(__dirname + '/public/round.html'));
+});
+
+app.get('/memelord', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+    gamename = request.query;
+    db.collection.('games', function(er, coll) {
+       collection.find(gamename).toArray(function(err, results) {
+          if (results.memelord == )
+       });
+    });
+    response.send();
 });
 
 app.get('/score', function(request, response) {
