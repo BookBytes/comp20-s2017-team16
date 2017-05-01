@@ -10,16 +10,16 @@ var randNum = function getRandomInt(min, max) {
 }
 var meme;
 
-function memeLogic= {
+function memeLogic(event) = {
     assignMemelord();
-    memelordStatus();
+    memelordStatus(event);
 }
 
 function assignMemelord = {
 
 }
 
-function memelordStatus = {
+function memelordStatus(event) = {
     if (this.memelord = true){
         if (event.ctrlKey){
             // need to send to others
@@ -31,12 +31,11 @@ function memelordStatus = {
     }
 }
 
+// need to add server time
 function sendMeme = {
     var img = $('<img>', {id: "image", src: "/img/meme"+randNum, alt: "memeattack!"});
     $("body").appendChild(img);
 }
-
-
 
 // $("ctrlKey").keyup(function(){
 //     var min = 1;
