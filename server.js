@@ -160,9 +160,6 @@ app.get('/round', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/round.html'));
 });
 
-
-// post to game_Table
-// post to stories_Table
 app.post('/game_Table', function (request, response){
     var username = request.body.username;
     var roundNum = request.body.roundNum;
@@ -198,7 +195,15 @@ app.post('/stories_Table', function (request, response){
         "paragraph":paragraph
     }
 
-    if(!(storyName) || !(paragraph) || !(paragraphNum) || isNan()) // working here
+    if(!(storyName) || !(paragraph) || !(paragraphNum) || isNan(paragraphNum)){
+        response.send("error":"Something is wrong with the data");
+    }
+
+    else {
+        db.collection('stories_Table' function (error, collection){
+            collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, paragraphNum:toInsert.paragraphNum, paragraph:toInsert.paragraph}, {upsert:true})
+        });
+    }
 });
 
 app.get('/memelord', function(request, response) {

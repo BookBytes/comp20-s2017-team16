@@ -110,6 +110,11 @@ function update_textboxes()
         // topPlayer.innerHTML = story[currentLine - 1];});
 }
 
+function getParagraph()
+{
+    
+}
+
 // Things to do:
     // ✓ keep track of user time
     // ✓ redirect to the proper score page (at the end of round)
