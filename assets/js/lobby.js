@@ -1,16 +1,10 @@
-/* lobby.js 
-This file will be in charge of the following three things:
-- Getting username from index.html
-- Randomly generating a theme
-- Finding the three closest players (through geolocation) 
+//  lobby.js 
+//  Purpose: to get username from database, to randomly generate a theme, and to
+//		find the three closest players (through geolocation)
+//
 
-*/
 var list = ['4th Wall Break', 'Dumb Guitar Solo', 'Office-Theme Rick Roll', 
 	'Short-Lined', 'The New Food', 'The Patient Cat', 'Borrowing A Match'];
-/*['HARRY POTTER', 'SPONGEBOB', 'GOOSEBUMPS', 'STAR WARS', 'STAR TREK', 
-	'HISTORICAL FICTION', 'BREAKING THE FOURTH WALL', 'DUNE SERIES', 'MEMELORD LORE',
-	'NYAN CAT ORIGIN STORY', 'CHUCK NORRIS', 'CANDYLAND', 'GRIMS FAIRY TALES', 
-	'INDIANA JONES', 'FAIRLY ODD PARENTS', 'JIMMY NEUTRON'];*/
 
 var myLat = 0;
 var myLng = 0;
@@ -26,7 +20,6 @@ function start_page() {
 	findCompetitors(); // finds nearby competitors
 }
 
-// http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
 function getData() 
 {
 		$.get("https://m3m3l0rd.herokuapp.com/geolocation", function (data) {

@@ -1,5 +1,4 @@
 // index.js
-// By: Bianca Capretta and Kingsley Bowen
 // Purpose: in charge of getting username from textbox, getting user's current
 //          and adding this new user to the server. When submit is clicked,
 //			go to lobby page

@@ -160,14 +160,15 @@ app.get('/round', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/round.html'));
 });
 
-
-// post to game_Table
-// post to stories_Table
 app.post('/game_Table', function (request, response){
     var username = request.body.username;
     var roundNum = request.body.roundNum;
     var sentenceNum = request.body.sentenceNum;
     var wpm = request.body.wpm;
+
+    wpm = parseFloat(wpm);
+    roundNum = parseFloat(roundNum);
+    sentenceNum = parseFloat(sentenceNum);
 
     var toInsert = {
         "username": username,
@@ -189,18 +190,22 @@ app.post('/game_Table', function (request, response){
 
 app.post('/stories_Table', function (request, response){
     var storyName = request.body.storyName;
-    var paragraphNum = request.body.paragraphNum;
-    var paragraph = request.body.paragraph;
+    var story = request.body.story;
 
     var toInsert = {
         "storyName":storyName,
-        "paragraphNum":paragraphNum,
-        "paragraph":paragraph
+        "story":story
     }
 
-    if(!(storyName) || !(paragraph) || !(paragraphNum) || isNan()) {
-     }
- });
+    if(!(storyName) || !(story)){
+        response.send("error":"Something is wrong with the data");
+    }
+    else {
+        db.collection('stories_Table' function (error, collection){
+            collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, story:toInsert.story}, {upsert:true})
+        });
+    }
+});
 
 app.get('/memelord', function(request, response) {
     response.set('Content-Type', 'text/html');
