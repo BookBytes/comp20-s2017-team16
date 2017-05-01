@@ -8,15 +8,15 @@ var randNum = function getRandomInt(min, max) {
     var max = 38;
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-var meme;
+
 
 function memeLogic(event) = {
     assignMemelord();
     memelordStatus(event);
 }
 
-function assignMemelord = {
-
+function assignMemelord() = {
+// every 5 seconds change
 }
 
 function memelordStatus(event) = {
@@ -24,17 +24,19 @@ function memelordStatus(event) = {
         if (event.ctrlKey){
             // need to send to others
                 var $body = $('body').html; // copy what they have written
-                sendMeme();
+                sendMeme(randNum);
                 memelord = false;
-                $('body').html = $body;
+                $('body').html = $body; // replace
         }
     }
 }
 
 // need to add server time
-function sendMeme = {
+function sendMeme (randNum) = {
     var img = $('<img>', {id: "image", src: "/img/meme"+randNum, alt: "memeattack!"});
-    $("body").appendChild(img);
+    $("body").append(img);
+    // wait 3 seconds
+    $("body").remove(img);
 }
 
 // $("ctrlKey").keyup(function(){
@@ -55,9 +57,6 @@ function sendMeme = {
 // var $body = $('body').html;
 // insert image
 // $('body').html = $body
-
-
-
 
 // if (e.ctrlKey){
 //     var randNum = Math.floor((Math.random()*10)+1);
