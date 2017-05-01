@@ -8,30 +8,14 @@ var myLat = 0;
 var myLng = 0;
 var curr_user = "";
 
-var express = require('express');
-var app = express();
-
-var mongoUri = process.env.MONGODB_URI || process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/';
-var MongoClient = require('mongodb').MongoClient, format = require('util').format;
-var db = MongoClient.connect(mongoUri, function(error, databaseConnection) {
-    db = databaseConnection;
-});
-
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Header", "Origin, X-Requested-Width, Content-Type, Accept");
-});
-
-app.use(express.static(__dirname + '/public'));
-
 function render_user_info() {
 	getMyLocation();
 	console.log("my location is lat/lng" + myLat + " " + myLng);
 	getUsername();
 	console.log("username is" + curr_user);
 
-	$.post("https://m3m3l0rd.herokuapp.com/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
-	$.get("https://m3m3l0rd.herokuapp.com/lobby?username=" + curr_user);
+	$.post("/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
+	$.get("/lobby?username=" + curr_user);
 	// go to next page
 	//window.location.href = "https://www.m3m3l0rd.herokuapp.com/lobby?username=" + curr_user;
 }
