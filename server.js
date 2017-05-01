@@ -42,7 +42,7 @@ app.get('/', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     // response.sendFile(path.join(__dirname + '/public/index.html'));
-    response.send('/public/index.html');
+    response.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 app.get('/lobby', function(request, response) {
@@ -52,7 +52,7 @@ app.get('/lobby', function(request, response) {
 
     // console.log("should be sending you to lobby");
     // response.sendFile(path.join(__dirname + '/public/lobby.html'));
-    response.send('public/lobby.html');
+    response.sendFile(path.join(__dirname + 'public/lobby.html'));
 });
 
 app.post('/geolocation', function(request, response) {
@@ -156,7 +156,7 @@ app.get('/round', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    response.send(path.join(__dirname + '/public/round.html'));
+    response.sendFile(path.join(__dirname + '/public/round.html'));
 });
 
 app.get('/memelord', function(request, response) {
@@ -176,6 +176,9 @@ app.get('/score', function(request, response) {
 	response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    // TODO: Change this to be stored in the db
+    var wpm = request.query.wpm;
 
     response.sendFile(path.join(__dirname + '/public/score.html'));
 });
