@@ -8,7 +8,6 @@ var validator = require('validator');
 var path = require('path');
 
 var app = express();
-
 app.set('port', (process.env.PORT || 5000));
 
 
@@ -181,6 +180,21 @@ app.get('/score', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/score.html'));
 });
 
-
+// path handler to return user info for populating score page
+app.get('/userInfo', function(req, res) {
+    db.collection('round', function(error, collection) {
+        if (error) {
+            res.send(error);
+        }
+        collection.find().toArray(function(error, cursor) {
+            if (error) {
+                res.send(error);
+            }
+            res.send({"user1": 1, "user2": 2, "user3": 3, "user4": 4});
+            // TODO -- EXTRACT DATA FROM ROUND DB
+            // ROUND COLLECTION = Username | round number | score | OTHERS?
+        });
+    });
+});
 
 app.listen(process.env.PORT || 5000);
