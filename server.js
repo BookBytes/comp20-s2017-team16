@@ -75,7 +75,7 @@ app.post('/geolocation', function(request, response) {
             else {
                 db.collection('users', function(error, coll) {
                     coll.find().toArray(function(error, results) {
-                        response.send(results);
+                        response.send({results});
                     });
                 });
             }
@@ -95,7 +95,7 @@ app.get('/geolocation', function(request, response) {
         }
         else {
             coll.find({username : user}).toArray(function(err, results) {
-                response.send(results);
+                response.send({results});
             });
         }
     });
