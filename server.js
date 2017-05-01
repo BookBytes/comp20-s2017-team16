@@ -159,6 +159,47 @@ app.get('/round', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/round.html'));
 });
 
+
+// post to game_Table
+// post to stories_Table
+app.post('/game_Table', function (request, response){
+    var username = request.body.username;
+    var roundNum = request.body.roundNum;
+    var sentenceNum = request.body.sentenceNum;
+    var wpm = request.body.wpm;
+
+    var toInsert = {
+        "username": username,
+        "roundNum" : roundNum,
+        "sentenceNum" : sentenceNum,
+        "wpm" : wpm
+    }
+
+    if((!username) || isNan(roundNum) || isNan(sentenceNum) || !(roundNum) || !(sentenceNum) || isNan(wpm) || !(wpm)){
+        response.send("error":"Something is wrong with the data");
+    }
+
+    else {
+        db.collection('game_Table', function(error, collection){
+            collection.update({username:toInsert.username}, {username:toInsert.username, roundNum:toInsert.roundNum, sentenceNum:toInsert.sentenceNum, wpm:toInsert.wpm}, {upsert:true})
+        });
+    }
+});
+
+app.post('/stories_Table', function (request, response){
+    var storyName = request.body.storyName;
+    var paragraphNum = request.body.paragraphNum;
+    var paragraph = request.body.paragraph;
+
+    var toInsert = {
+        "storyName":storyName,
+        "paragraphNum":paragraphNum,
+        "paragraph":paragraph
+    }
+
+    if(!(storyName) || !(paragraph) || !(paragraphNum) || isNan()) // working here
+});
+
 app.get('/memelord', function(request, response) {
     response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
