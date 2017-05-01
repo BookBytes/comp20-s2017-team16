@@ -29,9 +29,9 @@ function render_user_info() {
 	getUsername();
 
 	$.post("https://m3m3l0rd.herokuapp.com/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
-
+	$.get("https://m3m3l0rd.herokuapp.com/lobby?username=" + curr_user);
 	// go to next page
-	//window.location = "https://www.m3m3l0rd.herokuapp.com/lobby";
+	//window.location.href = "https://www.m3m3l0rd.herokuapp.com/lobby?username=" + curr_user;
 }
 
 function getMyLocation()
@@ -49,7 +49,7 @@ function getMyLocation()
 
 function getUsername()
 {
-	username = document.getElementById('curr_user').id;
+	curr_user = document.getElementById('curr_user').id;
 }
 
 

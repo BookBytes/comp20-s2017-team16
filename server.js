@@ -164,9 +164,9 @@ app.get('/memelord', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
     gamename = request.query;
-    db.collection.('games', function(er, coll) {
+    db.collection('games', function(er, coll) {
        collection.find(gamename).toArray(function(err, results) {
-          if (results.memelord == )
+        //  if (results.memelord == )
        });
     });
     response.send();
