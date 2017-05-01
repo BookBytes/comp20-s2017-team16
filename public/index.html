@@ -16,8 +16,10 @@ Redirect to lobby-->
         <h1>MEMELORD LOBBY</h1>
 
         <hr>
-        <h2>What will be your username?
-        <form>
+        <h2>What will be your unique username?
+        <!-- http://stackoverflow.com/questions/2906582/how-to-create-an-html-
+                    button-that-acts-like-a-link-->
+        <form method="post" action="https://m3m3l0rd.herokuapp.com/lobby">
             <input type="text" name="curr_user" id="username" />
             <input type="submit" value="Submit" onclick="render_user_info();" />
         </form>
