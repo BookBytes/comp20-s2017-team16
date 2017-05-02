@@ -2,7 +2,7 @@
 /* uses listeners to update user typed data for all 4 users and presents it on screen */
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
 
-var story; // = "Behold... He climbed the beanstalk of course!" // for test purposes only
+var story = "Behold... He climbed the beanstalk of course!" // for test purposes only
 var paragraph;
 var currentLine = 1;
 var maxLine;
@@ -81,7 +81,7 @@ function check_input()
 
     time = document.getElementById("time");
     time.innerHTML = ((newTimer - timer) / 1000).toFixed(1) + " seconds";
-	
+
     update_textboxes();
     input = document.getElementById("bottom_input").value;
 
@@ -99,20 +99,20 @@ function clear_textbox(){
 
 function update_textboxes()
 {
-    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P1", 
-        function (P1progress) { 
+    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P1",
+        function (P1progress) {
             topPlayer = document.getElementById("P1");
             topPlayer.innerHTML = story[P1progress];});
             // topPlayer.innerHTML = story[currentLine - 1];});
-    
-    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P2", 
-    function (P2progress) { 
+
+    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P2",
+    function (P2progress) {
         LeftPlayer = document.getElementById("P2");
         LeftPlayer.innerHTML = story[P2progress];});
         // topPlayer.innerHTML = story[currentLine - 1];});
 
-    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P3", 
-    function (P3progress) { 
+    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P3",
+    function (P3progress) {
         RightPlayer = document.getElementById("P3");
         RightPlayer.innerHTML = story[P3progress];});
         // topPlayer.innerHTML = story[currentLine - 1];});
@@ -120,7 +120,7 @@ function update_textboxes()
 
 function getParagraph()
 {
-    
+
 }
 
 // Things to do:
