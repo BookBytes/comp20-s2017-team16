@@ -9,7 +9,7 @@ var maxLine;
 var timer;
 var paragraphNum;
 var storyName;
-var curr_user;
+// var curr_user;
 
 function init()
 {   
@@ -19,7 +19,7 @@ function init()
     timer = Date.now();
     time = document.getElementById("time");
     time.innerHTML = 0 + " seconds";
-    //update_textboxes();
+    update_textboxes();
 }
 
 // function getUserInfo(){
@@ -78,7 +78,7 @@ function check_input()
     else if ((newTimer - timer) > (1000 * 60 * 10)) {
         line = document.getElementById("center");
 	    line.innerHTML = "Out of time.";
-	    // wpm = find_wpm((newTimer - timer) * 1000 * 60);
+	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
         $.get('/score?wpm=INVALID');
     }
 
@@ -103,14 +103,14 @@ function check_input()
         line.innerHTML = story[currentLine - 1];
         // input = '';
         clear_textbox();
-    }
+    // }
 }
 
 function clear_textbox(){
     document.getElementById("bottom_input").value = "";
 }
 
-/*function update_textboxes()
+function update_textboxes()
 {
     $.get('/getscore?player=P1', function (P1progress) {
         topPlayer = document.getElementById("P1");
@@ -126,7 +126,7 @@ function clear_textbox(){
         RightPlayer = document.getElementById("P3");
         RightPlayer.innerHTML = story[P3progress];});
         // topPlayer.innerHTML = story[currentLine - 1];});
-}*/
+}
 
 function sendToScore (){
     window.location.href = "https://m3m3l0rd.herokuapp/score?username=" + mchow01;
