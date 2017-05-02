@@ -2,16 +2,18 @@
 /* uses listeners to update user typed data for all 4 users and presents it on screen */
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
 
-var paragraph = "Play mind games, talk trash, and take any measures you can to out-compete your friends. If the youtube comments on my eighth grade spanish project have taught me anything, it is this: there are no friends on the internet. There exist only those who win at m3m3l0rd and those who lose." // for test purposes only
+var paragraph = "Play mind games, talk trash, and take any measures you can to out-compete your friends. If the youtube comments on my eighth grade spanish project have taught me anything, it is this: there are no friends on the internet." // for test purposes only
 var story;
 var currentLine = 1;
 var maxLine;
 var timer;
 var paragraphNum;
 var storyName;
+var curr_user;
 
 function init()
 {   
+    getUserInfo();
     // getParagraph();
     parse_story(); // splits paragraph into lines
     timer = Date.now();
@@ -20,6 +22,11 @@ function init()
     //update_textboxes();
 }
 
+function getUserInfo(){
+    $.get('/game_Table', function(data){
+        curr_user = data.body.username;
+    });
+}
 // function getParagraph()
 // {
 //     $.get('/stories_Table', function (data){
@@ -79,8 +86,9 @@ function check_input()
         line.innerHTML = "You finished this round!";
 	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
 	    $.get('/score?wpm=' + wpm);
-        currentLine = -1;
         sendToScore();
+        currentLine = -1;
+
 	    return;
     }
 
