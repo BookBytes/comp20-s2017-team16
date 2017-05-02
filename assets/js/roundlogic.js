@@ -2,8 +2,8 @@
 /* uses listeners to update user typed data for all 4 users and presents it on screen */
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
 
-var story = "Behold... He climbed the beanstalk of course!" // for test purposes only
-var paragraph;
+var paragraph = "Behold... He climbed the beanstalk of course!" // for test purposes only
+var story;
 var currentLine = 1;
 var maxLine;
 var timer;
