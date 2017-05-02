@@ -97,7 +97,7 @@ function check_input()
 
     update_textboxes();
 
-    if (((newTimer - timer) % 1000) == 0) {
+    if (((newTimer - timer) % 100) == 0) {
         sendMeme(randNum());
     }
 
