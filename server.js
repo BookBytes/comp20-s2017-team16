@@ -134,6 +134,7 @@ app.post('/game_Table', function (request, response){
     else {
         db.collection('game_Table', function(error, collection){
             collection.update({username:toInsert.username},{username:toInsert.username, roundNum:toInsert.roundNum, sentenceNum:toInsert.sentenceNum, wpm:toInsert.wpm, storyName:toInsert.storyName, gameID:toInsert.gameID}, {upsert:true})
+            response.send("got it");
         });
     }
 });
