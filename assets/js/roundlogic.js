@@ -1,14 +1,9 @@
 /* JS logic for running the game in real time */
 /* uses listeners to update user typed data for all 4 users and presents it on screen */
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
-<<<<<<< HEAD
 
 var story = "Behold... He climbed the beanstalk of course!" // for test purposes only
 var paragraph;
-=======
-var paragraph = "Behold... He climbed the beanstalk of course!" // for test purposes only
-var story;
->>>>>>> 46a207c0dce98e27df70a0db88c237819132ac74
 var currentLine = 1;
 var maxLine;
 var timer;

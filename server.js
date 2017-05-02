@@ -182,21 +182,17 @@ app.post('/stories_Table', function (request, response){
         "paragraphNum":paragraphNum
     }
 
-<<<<<<< Updated upstream
     if(!(storyName) || !(story)){
-<<<<<<< HEAD
         response.send("error Something is wrong with the data");
     }
     else {
         db.collection('stories_Table', function (error, collection){
             collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, story:toInsert.story}, {upsert:true})
-=======
         response.send({"error":"Something is wrong with the data"});
     }
     else {
         db.collection('stories_Table', function (error, collection) {
             collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, story:toInsert.story}, {upsert:true})
-=======
     if(!(storyName) || !(paragraph) || isNan(paragraphNum) || !(paragraphNum)){
         response.send("error":"Something is wrong with the data");
     }
@@ -204,8 +200,6 @@ app.post('/stories_Table', function (request, response){
         db.collection('stories_Table' function (error, collection){
             collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, paragraph:toInsert.paragraph, paragraphNum:toInsert.paragraphNum}, {upsert:true})
             response.send("got it");
->>>>>>> Stashed changes
->>>>>>> 46a207c0dce98e27df70a0db88c237819132ac74
         });
     }
 });
