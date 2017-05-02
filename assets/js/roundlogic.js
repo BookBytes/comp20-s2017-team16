@@ -78,8 +78,9 @@ function check_input()
     else if ((newTimer - timer) > (1000 * 60 * 1.5)) {
         line = document.getElementById("center");
         line.innerHTML = "OUT OF TIME!";
+        sendToScore();
         // wpm = find_wpm((newTimer - timer) * 1000 * 60);
-        $.get('/score?wpm=INVALID');
+        //$.get('/score?wpm=INVALID');
     }
 
     else if (currentLine > maxLine) {
