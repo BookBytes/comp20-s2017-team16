@@ -14,7 +14,6 @@ var me;
 // when window loads, have code start running
 function start_page() {
 	getData(); // makes username show up
-	console.log("username is "+ username +" lat is "+myLat+" lng is " + myLng);
 	putUsername();
 	randomize(); // makes random category appear
 	findCompetitors(); // finds nearby competitors
@@ -22,12 +21,15 @@ function start_page() {
 
 function getData() 
 {
-		$.get("https://m3m3l0rd.herokuapp.com/geolocation", function (data) {
+		/*$.get('/geolocation', function (data) {
 			myLat = parseFloat(data.lat);
 			myLng = parseFloat(data.lng);
 			me = new google.maps.LatLng(myLat, myLng);
 			username = data.username;
-		});
+		});*/
+		var query = window.location.search.substring(1);
+		var vars = query.split('=');
+		username = vars[1];
 }
 
 function putUsername()
