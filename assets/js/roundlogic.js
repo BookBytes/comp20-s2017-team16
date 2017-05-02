@@ -96,9 +96,9 @@ function check_input()
     time.innerHTML = ((newTimer - timer) / 1000).toFixed(1) + " seconds";
 
     update_textboxes();
-    
+
     if ((((newTimer - timer) * 1000) % 10) == 0) {
-        sendMeme(randNum());
+        sendMeme(round(randNum()));
     }
 
     input = document.getElementById("bottom_input").value;
