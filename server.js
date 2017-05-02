@@ -245,6 +245,7 @@ app.get('/userInfo', function(req, res) {
             res.send({"user1": 1, "user2": 2, "user3": 3, "user4": 4});
             // TODO -- EXTRACT DATA FROM ROUND DB
             // ROUND COLLECTION = Username | round number | score | OTHERS?
+            // SCHEMA FOR USERS DB?? NEED USERNAMES AND SCORES
         });
     });
 });
