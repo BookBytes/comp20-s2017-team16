@@ -162,26 +162,29 @@ app.post('/game_Table', function (request, response){
     var sentenceNum = request.body.sentenceNum;
     var wpm = request.body.wpm;
     var storyName = request.body.storyName;
+    var gameID = request.body.gameID;
 
     wpm = parseFloat(wpm);
     roundNum = parseFloat(roundNum);
     sentenceNum = parseFloat(sentenceNum);
+    gameID = parseFloat(gameID);
 
     var toInsert = {
         "username": username,
         "roundNum" : roundNum,
         "sentenceNum" : sentenceNum,
         "wpm" : wpm,
-        "storyName" : storyName
+        "storyName" : storyName,
+        "gameID" : gameID
     }
 
-    if((!username) || isNaN(roundNum) || !(storyName) || isNaN(sentenceNum) || !(roundNum) || !(sentenceNum) || isNaN(wpm) || !(wpm)){
+    if((!username) || isNaN(roundNum) || !(storyName) || isNaN(sentenceNum) || !(roundNum) || !(sentenceNum) || isNaN(wpm) || !(wpm) || isNaN(gameID) || !(gameID)){
         response.send("Something is wrong with the data");
     }
 
     else {
         db.collection('game_Table', function(error, collection){
-            collection.update({username:toInsert.username},{username:toInsert.username, roundNum:toInsert.roundNum, sentenceNum:toInsert.sentenceNum, wpm:toInsert.wpm, storyName:toInsert.storyName}, {upsert:true})
+            collection.update({username:toInsert.username},{username:toInsert.username, roundNum:toInsert.roundNum, sentenceNum:toInsert.sentenceNum, wpm:toInsert.wpm, storyName:toInsert.storyName, gameID:toInsert.gameID}, {upsert:true})
         });
     }
 });
