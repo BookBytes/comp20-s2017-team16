@@ -28,10 +28,8 @@ function putUsername()
 function findCompetitors()
 {
 	$.get('/ready', function (data) {
-		console.log("in GET for ready");
 		// would check if data == true but just go
 		$.get('/goto', function(response) {
-			console.log("REDIRECTING");
 			setTimeout(function() {
 				window.location.href = 'https://m3m3l0rd.herokuapp.com/round?players=' + response;
 			}, 3000);

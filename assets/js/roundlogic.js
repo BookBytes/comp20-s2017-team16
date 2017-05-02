@@ -17,7 +17,7 @@ function init()
     timer = Date.now();
     time = document.getElementById("time");
     time.innerHTML = 0 + " seconds";
-    update_textboxes();
+    //update_textboxes();
 }
 
 // function getParagraph()
@@ -72,13 +72,13 @@ function check_input()
         line = document.getElementById("center");
 	    line.innerHTML = "Out of time.";
 	    // wpm = find_wpm((newTimer - timer) * 1000 * 60);
-        $.get("https://m3m3l0rd.herokuapp.com/score?wpm=INVALID");
+        $.get('/score?wpm=INVALID');
     }
 
     else if (currentLine > maxLine) {
         line.innerHTML = "You finished this round!";
 	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
-	    $.get("https://m3m3l0rd.herokuapp.com/score?wpm=" + wpm);
+	    $.get('/score?wpm=' + wpm);
         currentLine = -1;
 	    return;
     }
@@ -103,20 +103,17 @@ function clear_textbox(){
 
 function update_textboxes()
 {
-    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P1",
-        function (P1progress) {
-            topPlayer = document.getElementById("P1");
-            topPlayer.innerHTML = story[P1progress];});
-            // topPlayer.innerHTML = story[currentLine - 1];});
+    $.get('/getscore?player=P1', function (P1progress) {
+        topPlayer = document.getElementById("P1");
+        topPlayer.innerHTML = story[P1progress];});
+        // topPlayer.innerHTML = story[currentLine - 1];});
 
-    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P2",
-    function (P2progress) {
+    $.get('/getscore?player=P2', function (P2progress) {
         LeftPlayer = document.getElementById("P2");
         LeftPlayer.innerHTML = story[P2progress];});
         // topPlayer.innerHTML = story[currentLine - 1];});
 
-    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P3",
-    function (P3progress) {
+    $.get('/getscore?player=P3', function (P3progress) {
         RightPlayer = document.getElementById("P3");
         RightPlayer.innerHTML = story[P3progress];});
         // topPlayer.innerHTML = story[currentLine - 1];});

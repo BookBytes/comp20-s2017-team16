@@ -67,13 +67,11 @@ app.get('/ready', function(request, response) {
         }
         else {
             collection.find().toArray(function(err, results) {
-                if (results.length >= 1) { // checks if enough people are ready to play
-                    console.log("Length is: " + results.length);
+                //if (results.length >= 4) { // checks if enough people are ready to play
+                console.log("Length is: " + results.length);
+                setTimeout(function() {
                     response.send(true);
-                }
-                else {
-                    response.send(false);
-                }
+                }, 2000);
             });
         }
     });
@@ -86,6 +84,7 @@ app.get('/goto', function(request, response) {
 
     db.collection('game_Table', function(err, collection) {
         if (err) {
+            console.log("ROGER: we encountered an error");
             response.send({});
         }
         else {
