@@ -67,7 +67,8 @@ app.get('/ready', function(request, response) {
         }
         else {
             collection.find().toArray(function(err, results) {
-                if (results.length >= 2) { // checks if enough people are ready to play
+                if (results.length >= 1) { // checks if enough people are ready to play
+                    console.log("Length is: " + results.length);
                     response.send(true);
                 }
                 else {
@@ -89,8 +90,8 @@ app.get('/goto', function(request, response) {
         }
         else {
             collection.find().toArray(function(err, results) { // send top four players, two to test right now
-                response.send({"P1":results[0], "P2":results[1]});
-                // , "P3":results[2], "P4":results[3]
+                response.send({"P1":results[0]}); // testing with one player right now
+                // ,"P2":results[1],"P3":results[2], "P4":results[3]
             });
         }
     });
@@ -104,14 +105,6 @@ app.get('/round', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/round.html'));
 });
 
-app.post('/round', function(request, response) {
-    response.set('Content-Type', 'text/html');
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "X-Requested-With");
-
-    var story = request.body.story;
-    response.send(story);
-});
 
 app.post('/game_Table', function (request, response){
     var username = request.body.username;
@@ -213,6 +206,15 @@ app.get('/userInfo', function(req, res) {
 });
 
 app.listen(process.env.PORT || 5000);
+
+/*app.post('/round', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    var story = request.body.story;
+    response.send(story);
+});*/
 
 /*app.post('/geolocation', function(request, response) {
     response.set('Content-Type', 'text/html');

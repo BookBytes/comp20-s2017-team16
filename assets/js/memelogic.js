@@ -13,7 +13,7 @@ var randNum = function getRandomInt(min, max) {
 
 function memeLogic() {
     assignMemelord();
-    memelordStatus(;
+    memelordStatus();
 }
 
 function assignMemelord() {
