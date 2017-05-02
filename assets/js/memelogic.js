@@ -17,6 +17,7 @@ function memeLogic() {
 }
 
 function assignMemelord() {
+    
 // every 5 seconds change
 }
 
