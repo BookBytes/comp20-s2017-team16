@@ -75,9 +75,9 @@ function check_input()
     }
 
     // adapted from http://stackoverflow.com/questions/9224773/js-check-if-date-is-less-than-1-hour-ago
-    else if ((newTimer - timer) > (1000 * 60 * 10)) {
+    else if ((newTimer - timer) > (1000 * 60 * 1)) {
         line = document.getElementById("center");
-        line.innerHTML = "Out of time.";
+        line.innerHTML = "OUT OF TIME!";
         // wpm = find_wpm((newTimer - timer) * 1000 * 60);
         $.get('/score?wpm=INVALID');
     }
