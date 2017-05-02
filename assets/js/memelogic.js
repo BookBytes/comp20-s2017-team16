@@ -37,31 +37,3 @@ function sendMeme (randNum) {
         $("body").remove();
     }, 3000);
 }
-
-// $("ctrlKey").keyup(function(){
-//     var min = 1;
-//     var max = 38;
-
-//     img = new Image();
-//     img.onload = function () {
-//         context.drawImage(img, 10%,10%,10%,10%);
-//         img.src = "../assets/img/meme" + randNum;
-//     }
-// });
-
-
-// var img = $('<img>', {id: "image", src: "image.png", alt: "image"});
-// $("body").appendChild(img)
-
-// var $body = $('body').html;
-// insert image
-// $('body').html = $body
-
-// if (e.ctrlKey){
-//     var randNum = Math.floor((Math.random()*10)+1);
-//     img = new Image();
-//     onload = function () {
-//         context.drawImage(img, 10%,10%,10%,10%);
-//         src = "../"
-//     }
-// }
