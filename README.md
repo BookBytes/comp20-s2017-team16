@@ -26,6 +26,9 @@
 - Random generator of memes
 - Using google charts API to make a graph (holding user scores): https://developers.google.com/chart/interactive/docs/quick_start
 
+**Citations**
+- For the short stories, we got some material from [this website](https://americanliterature.com/short-short-stories)
+
 **Google doc of ideas to keep track of project progress**
 - [comp20-s2017-team16](https://docs.google.com/document/d/18OMnvcgBvlVS1rK5fUxWYP8MLUX7bqMWWuFzS2qP-Lo/edit?usp=sharing)
 
