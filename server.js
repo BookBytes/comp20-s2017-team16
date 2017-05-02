@@ -1,7 +1,8 @@
 // server.js
 // Purpose: to hold the tables in the database and all the get/post requests
 
-
+var list = ['4thWallBreak', 'DumbGuitarSolo', 'Officeish', 'Short-Lined', 'CheesyPickupLines'];
+var story = "";
 
 
 var express = require('express');
@@ -52,13 +53,10 @@ app.get('/', function(request, response) {
 });
 
 app.get('/lobby', function(request, response) {
-    // TODO
-    console.log("INSIDE LOBBY GET");
 	response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // console.log("should be sending you to lobby");
     response.sendFile(path.join(__dirname + '/public/lobby.html'));
 });
 
@@ -97,35 +95,25 @@ app.get('/ready', function(request, response) {
     // are there enough people close by?
     db.collection('users', function(err, collection) {
         if (err) {
-            response.send(false);
+            response.send("Error!");
         }
         else {
             collection.find().toArray(function(err, results) {
                 if (results.length >= 4) {
-                  response.send(true);
+                    // randomize story here
+                    story = list[Math.floor(Math.random()*list.length)];
+                    db.collection
+                    collection.insert({"username" : });
+
+                    collection.find().toArray(function(err, results) {
+                        // first four people added to database will get to play
+                        response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
+                    });
                 }
                 else {
-                  response.send(false);
+                    response.send("Not enough players");
                 }
             });
-        }
-    });
-});
-
-app.get('/goto', function(request, response) {
-    response.set('Content-Type', 'text/html');
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "X-Requested-With");
-
-    db.collection('users', function(err, collection) {
-        if (!err) {
-            collection.find().toArray(function(err, results) {
-                // first four people added to database will get to play
-                response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
-            });
-        }
-        else {
-            response.send({});
         }
     });
 });
