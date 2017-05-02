@@ -49,60 +49,29 @@ app.get('/', function(request, response) {
 });
 
 app.get('/lobby', function(request, response) {
-    // TODO
-    console.log("INSIDE LOBBY GET");
 	response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // console.log("should be sending you to lobby");
     response.sendFile(path.join(__dirname + '/public/lobby.html'));
 });
-
-app.post('/geolocation', function(request, response) {
-    response.set('Content-Type', 'text/html');
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "X-Requested-With");
-
-    var curr_user = request.body.username;
-    var myLat = parseFloat(request.body.lat);
-    var myLng = parseFloat(request.body.lng);
-
-    db.collection('users', function(error, coll) {
-        coll.insert( { username: curr_user, lat : myLat, lng : myLng });
-    });
-});
-
-/*app.get('/geolocation', function(request, response) {
-    response.set('Content-Type', 'text/html');
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "X-Requested-With");
-
-    var user = request.query.username;
-    db.collection('users', function(error, collection) {
-        collection.find({"username" : user}).toArray(function(err, results) {
-            response.send({results});
-        });
-    });
-}); */
 
 app.get('/ready', function(request, response) {
     response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // are there enough people close by?
-    db.collection('users', function(err, collection) {
+    db.collection('game_Table', function(err, collection) {
         if (err) {
             response.send(false);
         }
         else {
             collection.find().toArray(function(err, results) {
-                if (results.length >= 4) {
-                  response.send(true);
+                if (results.length >= 2) { // checks if enough people are ready to play
+                    response.send(true);
                 }
                 else {
-                  response.send(false);
+                    response.send(false);
                 }
             });
         }
@@ -114,27 +83,18 @@ app.get('/goto', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    db.collection('users', function(err, collection) {
-        if (!err) {
-            collection.find().toArray(function(err, results) {
-                // first four people added to database will get to play
-                response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
-            });
+    db.collection('game_Table', function(err, collection) {
+        if (err) {
+            response.send({});
         }
         else {
-            response.send({});
+            collection.find().toArray(function(err, results) { // send top four players, two to test right now
+                response.send({"P1":results[0], "P2":results[1]});
+                // , "P3":results[2], "P4":results[3]
+            });
         }
     });
 });
-
-/*app.post('/lobby', function(request, response) {
-  response.set('Content-Type', 'text/html');
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers", "X-Requested-With");
-
-  response.sendFile(path.join(__dirname + 'public/lobby.html'));
-
-}); */
 
 app.get('/round', function(request, response) {
 	response.set('Content-Type', 'text/html');
@@ -253,3 +213,31 @@ app.get('/userInfo', function(req, res) {
 });
 
 app.listen(process.env.PORT || 5000);
+
+/*app.post('/geolocation', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    var curr_user = request.body.username;
+    var myLat = parseFloat(request.body.lat);
+    var myLng = parseFloat(request.body.lng);
+
+    db.collection('users', function(error, coll) {
+        coll.insert( { username: curr_user, lat : myLat, lng : myLng });
+    });
+});
+
+app.get('/geolocation', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    var user = request.query.username;
+    db.collection('users', function(error, collection) {
+        collection.find({"username" : user}).toArray(function(err, results) {
+            response.send({results});
+        });
+    });
+}); 
+ */
