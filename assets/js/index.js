@@ -14,7 +14,7 @@ function render_user_info() {
 	console.log("username is: " + curr_user);
 
 	$.post("/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
-	$.get("/lobby");
+	window.location.href = "/lobby";
 	return false;
 	// go to next page
 	//window.location.href = "https://www.m3m3l0rd.herokuapp.com/lobby?username=" + curr_user;
