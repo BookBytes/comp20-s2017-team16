@@ -2,7 +2,7 @@
 /* uses listeners to update user typed data for all 4 users and presents it on screen */
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
 
-var paragraph = "Behold... He climbed the beanstalk of course!" // for test purposes only
+var paragraph = "Become the m3m3l0rd, and spam the ever loving you-know-what out of your friends. Play mind games, talk trash, any measures you can take to out-compete your friends must be taken. If the youtube comments on my eighth grade spanish project have taught me anything, it is this: there are no friends on the internet. There exist only those who win at m3m3l0rd and those who lose. It is the modern day hunger games, and you will win." // for test purposes only
 var story;
 var currentLine = 1;
 var maxLine;
