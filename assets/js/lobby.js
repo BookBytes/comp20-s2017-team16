@@ -3,15 +3,12 @@
 //		find the three closest players (through geolocation)
 //
 
-
-
 var username = "";
 
 // when window loads, have code start running
 function start_page() {
 	getData();
 	putUsername();
-	randomize();
 	findCompetitors(); // finds nearby competitors
 }
 

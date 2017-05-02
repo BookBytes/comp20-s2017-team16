@@ -60,49 +60,20 @@ app.get('/lobby', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/lobby.html'));
 });
 
-app.post('/geolocation', function(request, response) {
-    response.set('Content-Type', 'text/html');
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "X-Requested-With");
-
-    var curr_user = request.body.username;
-    var myLat = parseFloat(request.body.lat);
-    var myLng = parseFloat(request.body.lng);
-
-    db.collection('users', function(error, coll) {
-        coll.insert( { username: curr_user, lat : myLat, lng : myLng });
-    });
-});
-
-/*app.get('/geolocation', function(request, response) {
-    response.set('Content-Type', 'text/html');
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header("Access-Control-Allow-Headers", "X-Requested-With");
-
-    var user = request.query.username;
-    db.collection('users', function(error, collection) {
-        collection.find({"username" : user}).toArray(function(err, results) {
-            response.send({results});
-        });
-    });
-}); */
-
 app.get('/ready', function(request, response) {
     response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // are there enough people close by?
-    db.collection('users', function(err, collection) {
+    db.collection('game', function(err, collection) {
         if (err) {
             response.send("Error!");
         }
         else {
             collection.find().toArray(function(err, results) {
-                if (results.length >= 4) {
-                    // randomize story here
-                    story = list[Math.floor(Math.random()*list.length)];
-                    db.collection
+                if (results.length >= 2) { // checks if enough people are ready to play
+                    story = list[Math.floor(Math.random()*list.length)]; // randomize story here
+                    
                     collection.insert({"username" : });
 
                     collection.find().toArray(function(err, results) {
@@ -117,15 +88,6 @@ app.get('/ready', function(request, response) {
         }
     });
 });
-
-/*app.post('/lobby', function(request, response) {
-  response.set('Content-Type', 'text/html');
-  response.header("Access-Control-Allow-Origin", "*");
-  response.header("Access-Control-Allow-Headers", "X-Requested-With");
-
-  response.sendFile(path.join(__dirname + 'public/lobby.html'));
-
-}); */
 
 app.get('/round', function(request, response) {
 	response.set('Content-Type', 'text/html');
@@ -238,3 +200,31 @@ app.get('/userInfo', function(req, res) {
 });
 
 app.listen(process.env.PORT || 5000);
+
+/*app.post('/geolocation', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    var curr_user = request.body.username;
+    var myLat = parseFloat(request.body.lat);
+    var myLng = parseFloat(request.body.lng);
+
+    db.collection('users', function(error, coll) {
+        coll.insert( { username: curr_user, lat : myLat, lng : myLng });
+    });
+});
+
+app.get('/geolocation', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    var user = request.query.username;
+    db.collection('users', function(error, collection) {
+        collection.find({"username" : user}).toArray(function(err, results) {
+            response.send({results});
+        });
+    });
+}); 
+ */

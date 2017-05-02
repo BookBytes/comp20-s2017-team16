@@ -8,19 +8,16 @@ var myLng = 0;
 var curr_user = "";
 
 function render_user_info() {
-	getMyLocation();
-	console.log("my location is lat/lng " + myLat + " " + myLng);
 	getUsername();
-	console.log("username is: " + curr_user);
 
-	$.post("/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
+	//$.post("/geolocation", {"username" : curr_user, "lat" : myLat, "lng" : myLng});
 	window.location.href = "/lobby?username=" + curr_user;
 	return false;
 	// go to next page
 	//window.location.href = "https://www.m3m3l0rd.herokuapp.com/lobby?username=" + curr_user;
 }
 
-function getMyLocation()
+/*function getMyLocation()
 {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position) {
@@ -31,7 +28,7 @@ function getMyLocation()
 	else {
 		alert("Geolocation is not supported by your web browser.");
 	}
-}
+}*/
 
 function getUsername()
 {
