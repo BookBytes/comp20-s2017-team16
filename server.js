@@ -93,18 +93,7 @@ app.get('/goto', function(request, response) {
                 // , "P3":results[2], "P4":results[3]
             });
         }
-    }
-});
-
-
-
-
-
-        
-    else {
-        response.send("Not enough players");
-    }
-
+    });
 });
 
 app.get('/round', function(request, response) {
