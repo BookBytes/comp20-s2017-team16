@@ -1,9 +1,8 @@
 /* JS logic for running the game in real time */
 /* uses listeners to update user typed data for all 4 users and presents it on screen */
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
-
-var story; // = "Behold... He climbed the beanstalk of course!" // for test purposes only
-var paragraph;
+var paragraph = "Behold... He climbed the beanstalk of course!" // for test purposes only
+var story;
 var currentLine = 1;
 var maxLine;
 var timer;
@@ -17,23 +16,15 @@ function init()
     update_textboxes();
 }
 
-function get_story()
-{
-    $.get('/stories_Table', function(data) {
-        story = data.story;
-    });
-    parse_story();
-}
-
 function parse_story()
 {
     // see http://stackoverflow.com/questions/11761563/javascript-regexp-for-splitting-text-into-sentences-and-keeping-the-delimiter
-    paragraph = story.match( /[^\.!\?]+[\.!\?]+/g );
+    story = paragraph.match( /[^\.!\?]+[\.!\?]+/g );
     remove_leading_spaces();
 
     line = document.getElementById("center");
-    line.innerHTML += paragraph[currentLine - 1];
-    maxLine = paragraph.length;
+    line.innerHTML += story[currentLine - 1];
+    maxLine = story.length;
 }
 
 // see http://stackoverflow.com/questions/4503656/in-java-removing-first-character-of-a-string
