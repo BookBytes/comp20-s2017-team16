@@ -1,9 +1,6 @@
 // server.js
 // Purpose: to hold the tables in the database and all the get/post requests
 
-
-
-
 var express = require('express');
 var assert = require('assert');
 // Required if we need to use HTTP query or post parameters

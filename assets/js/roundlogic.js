@@ -7,14 +7,26 @@ var paragraph;
 var currentLine = 1;
 var maxLine;
 var timer;
+var paragraphNum;
+var storyName;
 
 function init()
-{
+{   
+    getParagraph();
     parse_story(); // splits paragraph into lines
     timer = Date.now();
     time = document.getElementById("time");
     time.innerHTML = 0 + " seconds";
     update_textboxes();
+}
+
+function getParagraph()
+{
+    $.get('/stories_Table', function (data){
+        paragraphNum = data.body.paragraphNum + 1;
+        paragraph = data.body.paragraph;
+        storyName = data.body.storyName;
+        $.post('/stories_Table', {"storyName":storyName, "paragraph":paragraph, "paragraphNum":paragraphNum});
 }
 
 function parse_story()
@@ -110,10 +122,7 @@ function update_textboxes()
         // topPlayer.innerHTML = story[currentLine - 1];});
 }
 
-function getParagraph()
-{
 
-}
 
 // Things to do:
     // ✓ keep track of user time
