@@ -77,18 +77,18 @@ function check_input()
     // adapted from http://stackoverflow.com/questions/9224773/js-check-if-date-is-less-than-1-hour-ago
     else if ((newTimer - timer) > (1000 * 60 * 10)) {
         line = document.getElementById("center");
-        line.innerHTML = "Out of time.";
-        // wpm = find_wpm((newTimer - timer) * 1000 * 60);
-        $.get('/score?wpm=INVALID');
+	    line.innerHTML = "Out of time.";
+	    // wpm = find_wpm((newTimer - timer) * 1000 * 60);
+        $.get("https://m3m3l0rd.herokuapp.com/score?wpm=INVALID");
     }
 
     else if (currentLine > maxLine) {
         line.innerHTML = "You finished this round!";
-        wpm = find_wpm((newTimer - timer) * 1000 * 60);
-        $.get('/score?wpm=' + wpm);
+	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
+	    $.get("https://m3m3l0rd.herokuapp.com/score?wpm=" + wpm);
         currentLine = -1;
         // sendToScore();
-        return;
+	    return;
     }
 
     time = document.getElementById("time");
@@ -111,26 +111,21 @@ function clear_textbox(){
 
 function update_textboxes()
 {
-//    $.get('/getscore?player=P1', 
-//        function (P1progress) {
-        topPlayer = document.getElementById("P1");
-//        topPlayer.innerHTML = story[P1progress];});
-        topPlayer.innerHTML = story[currentLine - 1]; //});
+ //   $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P1",
+ //       function (P1progress) {
+            topPlayer = document.getElementById("P1");
+ //           topPlayer.innerHTML = story[P1progress];});
+            topPlayer.innerHTML = story[currentLine - 1]; //});
 
-//    $.get('/getscore?player=P2', 
-//        function (P2progress) {
+//    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P2",
+//    function (P2progress) {
         LeftPlayer = document.getElementById("P2");
 //        LeftPlayer.innerHTML = story[P2progress];});
         LeftPlayer.innerHTML = story[currentLine - 1]; //});
 
-//    $.get('/getscore?player=P3', 
-//        function (P3progress) {
+//    $.get("https://m3m3l0rd.herokuapp.com/getscore?player=P3",
+//    function (P3progress) {
         RightPlayer = document.getElementById("P3");
-//        RightPlayer.innerHTML = story[P3progress];});
+//        RightPlayer.innerHTML = story[P3progress]; //});
         RightPlayer.innerHTML = story[currentLine - 1]; //});
-}
-
-function sendToScore ()
-{
-    window.location.href = "https://m3m3l0rd.herokuapp/score?username=" + mchow01;
 }
