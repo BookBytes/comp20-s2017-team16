@@ -39,5 +39,5 @@ function sendMeme (randomNum) {
         //$('center').value($center);
     //}, 3000);
 
-    window.alert(img);
+    window.alert("You've been MEMED by the M3m3l0rd!");
 }
