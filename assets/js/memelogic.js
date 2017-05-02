@@ -3,6 +3,7 @@
 var memePlacement = document.getElementById("body");
 var $body = $('body').html;
 var memelord = false;
+
 var randNum = function getRandomInt(min, max) {
     var min = 1;
     var max = 38;
@@ -10,7 +11,7 @@ var randNum = function getRandomInt(min, max) {
 }
 
 
-function memeLogic(event) {
+function memeLogic() {
     assignMemelord();
     memelordStatus(event);
 }
@@ -19,15 +20,12 @@ function assignMemelord() {
 // every 5 seconds change
 }
 
-function memelordStatus(event) {
+function memelordStatus() {
     if (this.memelord = true){
-        if (event.ctrlKey){
-            // need to send to others
-                var $body = $('body').html; // copy what they have written
-                sendMeme(randNum);
-                memelord = false;
-                $('body').html = $body; // replace
-        }
+        var $body = $('body').html; // copy what they have written
+        sendMeme(randNum);
+        memelord = false;
+        $('body').html = $body; // replace
     }
 }
 

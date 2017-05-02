@@ -14,10 +14,16 @@ make different for mobile, comp  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/js/roundlogic.js"></script>
     <script src = "/js/memelogic.js"> </script>
+    <script>function ControlKeyCheck(key) {
+                if (key.ctrlKey) {
+                    memeLogic();
+                }
+            }
+    </script>
   </head>
 
   <body onload="init()">
-    <input type = "text" onkeydown = "memeLogic(event)">
+    <script type="text/javascript">window.onkeypress = ControlKeyCheck</script>
     <div class="player_icon1"><img src="/img/player_icon.png"></img></div>
     <div class="player_icon2"><img src="/img/player_icon.png"></img></div>
     <div class="hbox_top" id="P1" value=""></div>
