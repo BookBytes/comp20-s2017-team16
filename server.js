@@ -179,7 +179,7 @@ app.post('/game_Table', function (request, response){
 
     else {
         db.collection('game_Table', function(error, collection){
-            collection.update({username:toInsert.username}, {username:toInsert.username, roundNum:toInsert.roundNum, sentenceNum:toInsert.sentenceNum, wpm:toInsert.wpm}, {upsert:true})
+            collection.insert({username:toInsert.username, roundNum:toInsert.roundNum, sentenceNum:toInsert.sentenceNum, wpm:toInsert.wpm});
         });
     }
 });
@@ -202,7 +202,7 @@ app.post('/stories_Table', function (request, response){
     }
     else {
         db.collection('stories_Table', function (error, collection){
-            collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, paragraph:toInsert.paragraph, paragraphNum:toInsert.paragraphNum}, {upsert:true})
+            collection.insert({storyName:toInsert.storyName, paragraph:toInsert.paragraph, paragraphNum:toInsert.paragraphNum});
             response.send("got it");
         });
     }
