@@ -63,20 +63,48 @@ app.get('/ready', function(request, response) {
 
     db.collection('game_Table', function(err, collection) {
         if (err) {
-            response.send("Error!");
+            response.send(false);
         }
         else {
             collection.find().toArray(function(err, results) {
                 if (results.length >= 2) { // checks if enough people are ready to play
-                    // first four people added to database will get to play
-                    response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
+                    response.send(true);
                 }
                 else {
-                    response.send("Not enough players");
+                    response.send(false);
                 }
             });
         }
     });
+});
+
+app.get('/goto', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    db.collection('game_Table', function(err, collection) {
+        if (err) {
+            response.send({});
+        }
+        else {
+            collection.find().toArray(function(err, results) { // send top four players, two to test right now
+                response.send({"P1":results[0], "P2":results[1]});
+                // , "P3":results[2], "P4":results[3]
+            });
+        }
+    }
+});
+
+
+
+
+
+        
+    else {
+        response.send("Not enough players");
+    }
+
 });
 
 app.get('/round', function(request, response) {

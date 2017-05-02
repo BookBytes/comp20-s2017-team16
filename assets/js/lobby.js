@@ -26,7 +26,12 @@ function putUsername()
 
 function findCompetitors()
 {
-	$.get('/ready', function (response) {
-		window.location.href = 'https://m3m3l0rd.herokuapp.com/round?players=' + response;
+	$.get('/ready', function (data) {
+		if (data == true) {
+			$.get('/goto', function(response) {
+				window.location.href = 'https://m3m3l0rd.herokuapp.com/round?players=' + response;
+			});
+		}
+		
 	});
 }
