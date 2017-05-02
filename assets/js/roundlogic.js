@@ -78,8 +78,9 @@ function check_input()
     else if (currentLine > maxLine) {
         line.innerHTML = "You finished this round!";
 	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
-	    $.get("https://m3m3l0rd.herokuapp.com/score?wpm=" + wpm);
+	    $.get('/score?wpm=' + wpm + '&username=' + username);
         currentLine = -1;
+        sendToScore();
 	    return;
     }
 
@@ -120,6 +121,10 @@ function update_textboxes()
         RightPlayer = document.getElementById("P3");
         RightPlayer.innerHTML = story[P3progress];});
         // topPlayer.innerHTML = story[currentLine - 1];});
+}
+
+function sendToScore (){
+    window.location.href = "/score?username=" + curr_user;
 }
 
 
