@@ -1,3 +1,9 @@
+// server.js
+// Purpose: to hold the tables in the database and all the get/post requests
+
+
+
+
 var express = require('express');
 var assert = require('assert');
 // Required if we need to use HTTP query or post parameters
@@ -70,7 +76,7 @@ app.post('/geolocation', function(request, response) {
     });
 });
 
-app.get('/geolocation', function(request, response) {
+/*app.get('/geolocation', function(request, response) {
     response.set('Content-Type', 'text/html');
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -81,7 +87,7 @@ app.get('/geolocation', function(request, response) {
             response.send({results});
         });
     });
-});
+}); */
 
 app.get('/ready', function(request, response) {
     response.set('Content-Type', 'text/html');
@@ -112,9 +118,9 @@ app.get('/goto', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     db.collection('users', function(err, collection) {
-        if (err) {
+        if (!err) {
             collection.find().toArray(function(err, results) {
-                results.sort(); // is this sorting so that the closest members are together?
+                // first four people added to database will get to play
                 response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
             });
         }
@@ -241,6 +247,7 @@ app.get('/userInfo', function(req, res) {
             res.send({"user1": 1, "user2": 2, "user3": 3, "user4": 4});
             // TODO -- EXTRACT DATA FROM ROUND DB
             // ROUND COLLECTION = Username | round number | score | OTHERS?
+            // SCHEMA FOR USERS DB?? NEED USERNAMES AND SCORES
         });
     });
 });
