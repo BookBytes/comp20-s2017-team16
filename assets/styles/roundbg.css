@@ -15,7 +15,7 @@ html {
 
 .hbox_bottom {
     background-color: #ffffff;
-    width: 75%;
+    width: 70%;
     height: 5%;
     border: 1% #000000;
     padding: 1%;
@@ -30,7 +30,7 @@ html {
 /* Vertical text from https://developer.mozilla.org/en-US/docs/Web/CSS/text-orientation */
 .vbox_left, .vbox_right {
     background-color: #ffffff;
-    width: 1.5%;
+    width: 3%;
     height: 70%;
     border: 1% #000000;
     padding: 1%;
