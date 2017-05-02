@@ -9,7 +9,7 @@ var timer;
 
 function init()
 {
-    get_story(); // splits paragraph into lines
+    parse_story(); // splits paragraph into lines
     timer = Date.now();
     time = document.getElementById("time");
     time.innerHTML = 0 + " seconds";
