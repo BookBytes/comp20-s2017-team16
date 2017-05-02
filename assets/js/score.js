@@ -64,6 +64,8 @@ $(document).ready(function() {
     $("body").append($scoreList);
     $("body").append($chart);
     window.setTimeout(function() {
-        window.location.href = "/round"
-    }, 10000);
+        $.get("/ready", function(data) {
+            window.location.href = "/round?players=" + data;
+        });
+    }, 20000);
 });
