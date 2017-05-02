@@ -39,13 +39,14 @@ function randomize()
 {
 	var item = list[Math.floor(Math.random()*list.length)];
 	document.getElementById("theme").innerHTML += 'We randomly chose a story for your game! It is called: ' + item ;
+	$.post('/round', {"story" : item}); // send story to round
 }
 
 function findCompetitors()
 {
-	$.get("https://m3m3l0rd.herokuapp.com/ready", function (data) {
+	$.get('/ready', function (data) {
 		if (data == true) {
-			$.get("https://m3m3l0rd.herokuapp.com/goto", function(response) {
+			$.get('/goto', function(response) {
 				window.location.href = 'https://m3m3l0rd.herokuapp.com/round?players=' + response;
 			});
 		}
