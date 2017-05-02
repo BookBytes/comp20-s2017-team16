@@ -62,25 +62,11 @@ app.post('/geolocation', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     var curr_user = request.body.username;
-    var myLat = request.body.lat;
-    var myLng = request.body.lng;
-    myLat = parseFloat(myLat);
-    myLng = parseFloat(myLng);
+    var myLat = parseFloat(request.body.lat);
+    var myLng = parseFloat(request.body.lng);
 
-    console.log("In POST for geolocation");
     db.collection('users', function(error, coll) {
-        coll.insert( { username: curr_user, lat : myLat, lng : myLng }, function(error, saved) {
-            if (error) {
-                response.send({"error": "Something is wrong with the data!"});
-            }
-            else {
-                db.collection('users', function(error, coll) {
-                    coll.find().toArray(function(error, results) {
-                        response.send({results});
-                    });
-                });
-            }
-        });
+        coll.insert( { username: curr_user, lat : myLat, lng : myLng });
     });
 });
 
@@ -90,15 +76,10 @@ app.get('/geolocation', function(request, response) {
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
     var user = request.query.username;
-    db.collection('users', function(error, coll) {
-        if (error) {
-            response.send("Something went wrong!");
-        }
-        else {
-            coll.find({username : user}).toArray(function(err, results) {
-                response.send({results});
-            });
-        }
+    db.collection('users', function(error, collection) {
+        collection.find({"username" : user}).toArray(function(err, results) {
+            response.send({results});
+        });
     });
 });
 
@@ -189,20 +170,42 @@ app.post('/game_Table', function (request, response){
 });
 
 app.post('/stories_Table', function (request, response){
+    var paragraph = request.body.paragraph;
+    var paragraphNum = request.body.paragraphNum;
     var storyName = request.body.storyName;
-    var story = request.body.story;
+
+    paragraphNum = parseFloat(paragraphNum);
 
     var toInsert = {
         "storyName":storyName,
-        "story":story
+        "paragraph":paragraph,
+        "paragraphNum":paragraphNum
     }
 
+<<<<<<< Updated upstream
     if(!(storyName) || !(story)){
+<<<<<<< HEAD
         response.send("error Something is wrong with the data");
     }
     else {
         db.collection('stories_Table', function (error, collection){
             collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, story:toInsert.story}, {upsert:true})
+=======
+        response.send({"error":"Something is wrong with the data"});
+    }
+    else {
+        db.collection('stories_Table', function (error, collection) {
+            collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, story:toInsert.story}, {upsert:true})
+=======
+    if(!(storyName) || !(paragraph) || isNan(paragraphNum) || !(paragraphNum)){
+        response.send("error":"Something is wrong with the data");
+    }
+    else {
+        db.collection('stories_Table' function (error, collection){
+            collection.update({storyName:toInsert.storyName}, {storyName:toInsert.storyName, paragraph:toInsert.paragraph, paragraphNum:toInsert.paragraphNum}, {upsert:true})
+            response.send("got it");
+>>>>>>> Stashed changes
+>>>>>>> 46a207c0dce98e27df70a0db88c237819132ac74
         });
     }
 });
