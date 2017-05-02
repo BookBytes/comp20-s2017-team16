@@ -33,7 +33,7 @@ function memelordStatus() {
 // need to add server time
 function sendMeme (randomNum) {
     var img = $('<img>', {id: "image", src: "../img/meme"+randomNum+".jpg", alt: "memeattack!"});
-    $("body").append(img);
+    $("body").html = img;
     setTimeout(function () {
         $("body").html = $body;
     }, 3000);
