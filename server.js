@@ -104,6 +104,22 @@ app.get('/round', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/round.html'));
 });
 
+app.get('/game_Table', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    db.collection('game_Table', function(err, collection) {
+        if (err) {
+            response.send({});
+        }
+        else {
+            collection.find().toArray(function(err, results) {
+                response.send(results[0]);
+            });
+        }
+    });
+});
 
 app.post('/game_Table', function (request, response){
     var username = request.body.username;

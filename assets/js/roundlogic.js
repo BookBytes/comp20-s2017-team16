@@ -78,11 +78,7 @@ function check_input()
     else if (currentLine > maxLine) {
         line.innerHTML = "You finished this round!";
 	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
-<<<<<<< HEAD
 	    $.get('/score?wpm=' + wpm);
-=======
-	    $.get('/score?wpm=' + wpm + '&username=' + username);
->>>>>>> 2ff2ab9ec712ac4d202176ab36c0b1a12c046956
         currentLine = -1;
         sendToScore();
 	    return;
@@ -106,7 +102,7 @@ function clear_textbox(){
     document.getElementById("bottom_input").value = "";
 }
 
-function update_textboxes()
+/*function update_textboxes()
 {
     $.get('/getscore?player=P1', function (P1progress) {
         topPlayer = document.getElementById("P1");
@@ -122,7 +118,7 @@ function update_textboxes()
         RightPlayer = document.getElementById("P3");
         RightPlayer.innerHTML = story[P3progress];});
         // topPlayer.innerHTML = story[currentLine - 1];});
-}
+}*/
 
 function sendToScore (){
     window.location.href = "https://m3m3l0rd.herokuapp/score?username=" + curr_user;
