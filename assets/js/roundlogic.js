@@ -87,9 +87,9 @@ function check_input()
 	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
 
 	    $.get('/score?wpm=' + wpm);
-
-        currentLine = -1;
         sendToScore();
+        currentLine = -1;
+
 	    return;
     }
 
