@@ -68,10 +68,8 @@ app.get('/ready', function(request, response) {
         else {
             collection.find().toArray(function(err, results) {
                 if (results.length >= 2) { // checks if enough people are ready to play
-                        collection.find().toArray(function(err, results) {
-                        // first four people added to database will get to play
-                        response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
-                    });
+                    // first four people added to database will get to play
+                    response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
                 }
                 else {
                     response.send("Not enough players");
