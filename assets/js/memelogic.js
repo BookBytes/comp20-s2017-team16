@@ -13,7 +13,7 @@ var randNum = function getRandomInt(min, max) {
 
 function memeLogic() {
     assignMemelord();
-    memelordStatus(event);
+    memelordStatus(;
 }
 
 function assignMemelord() {
@@ -33,8 +33,9 @@ function memelordStatus() {
 function sendMeme (randNum) {
     var img = $('<img>', {id: "image", src: "/img/meme"+randNum, alt: "memeattack!"});
     $("body").append(img);
-    // wait 3 seconds
-    $("body").remove();
+    setTimeout(function () {
+        $("body").remove();
+    }, 3000);
 }
 
 // $("ctrlKey").keyup(function(){
