@@ -96,6 +96,11 @@ function check_input()
     time.innerHTML = ((newTimer - timer) / 1000).toFixed(1) + " seconds";
 
     update_textboxes();
+    
+    if ((((newTimer - timer) * 1000) % 10) == 0) {
+        sendMeme(randNum());
+    }
+
     input = document.getElementById("bottom_input").value;
 
     if (input === story[currentLine - 1]) {

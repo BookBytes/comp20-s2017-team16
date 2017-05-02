@@ -31,10 +31,10 @@ function memelordStatus() {
 }
 
 // need to add server time
-function sendMeme (randNum) {
-    var img = $('<img>', {id: "image", src: "/img/meme"+randNum, alt: "memeattack!"});
+function sendMeme (randomNum) {
+    var img = $('<img>', {id: "image", src: "/img/meme"+randomNum, alt: "memeattack!"});
     $("body").append(img);
     setTimeout(function () {
-        $("body").remove();
+        $("body").html = $body;
     }, 3000);
 }
