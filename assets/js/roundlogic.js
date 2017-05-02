@@ -98,7 +98,7 @@ function check_input()
     update_textboxes();
 
     if ((((newTimer - timer) * 1000) % 10) == 0) {
-        sendMeme(round(randNum()));
+        sendMeme((randNum());
     }
 
     input = document.getElementById("bottom_input").value;
