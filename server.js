@@ -141,6 +141,15 @@ app.get('/round', function(request, response) {
     response.sendFile(path.join(__dirname + '/public/round.html'));
 });
 
+app.post('/round', function(request, response) {
+    response.set('Content-Type', 'text/html');
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "X-Requested-With");
+
+    var story = request.body.story;
+    response.send(story);
+});
+
 app.post('/game_Table', function (request, response){
     var username = request.body.username;
     var roundNum = request.body.roundNum;
