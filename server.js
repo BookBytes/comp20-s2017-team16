@@ -111,25 +111,30 @@ app.post('/game_Table', function (request, response){
     var roundNum = request.body.roundNum;
     var sentenceNum = request.body.sentenceNum;
     var wpm = request.body.wpm;
+    var storyName = request.body.storyName;
+    var gameID = request.body.gameID;
 
     wpm = parseFloat(wpm);
     roundNum = parseFloat(roundNum);
     sentenceNum = parseFloat(sentenceNum);
+    gameID = parseFloat(gameID);
 
     var toInsert = {
         "username": username,
         "roundNum" : roundNum,
         "sentenceNum" : sentenceNum,
-        "wpm" : wpm
+        "wpm" : wpm,
+        "storyName" : storyName,
+        "gameID" : gameID
     }
 
-    if((!username) || isNaN(roundNum) || isNaN(sentenceNum) || !(roundNum) || !(sentenceNum) || isNaN(wpm) || !(wpm)){
+    if((!username) || isNaN(roundNum) || !(storyName) || isNaN(sentenceNum) || !(roundNum) || !(sentenceNum) || isNaN(wpm) || !(wpm) || isNaN(gameID) || !(gameID)){
         response.send("Something is wrong with the data");
     }
 
     else {
         db.collection('game_Table', function(error, collection){
-            collection.insert({username:toInsert.username, roundNum:toInsert.roundNum, sentenceNum:toInsert.sentenceNum, wpm:toInsert.wpm});
+            collection.update({username:toInsert.username},{username:toInsert.username, roundNum:toInsert.roundNum, sentenceNum:toInsert.sentenceNum, wpm:toInsert.wpm, storyName:toInsert.storyName, gameID:toInsert.gameID}, {upsert:true})
         });
     }
 });
@@ -195,6 +200,7 @@ app.get('/userInfo', function(req, res) {
             res.send({"user1": 1, "user2": 2, "user3": 3, "user4": 4});
             // TODO -- EXTRACT DATA FROM ROUND DB
             // ROUND COLLECTION = Username | round number | score | OTHERS?
+            // SCHEMA FOR USERS DB?? NEED USERNAMES AND SCORES
         });
     });
 });

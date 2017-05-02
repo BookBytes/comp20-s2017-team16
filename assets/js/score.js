@@ -7,7 +7,13 @@
  */
 
 var errorThrown = false;
-var $title = $("<h1>", {id: "title", text: "Round Scores!"});
+// retrieve words per minute from query string
+var query = window.location.search.substring(1);
+var vars = query.split('=');
+var wpm = vars[1];
+
+// build page
+var $title = $("<h1>", {id: "title", text: "Round Scores! You scored " + wpm + " words per minute"});
 var $scoreList = $("<div>", {id: "scoreList"});
 var $chart = $("<img>", {
     id: "chart"
@@ -57,4 +63,7 @@ $(document).ready(function() {
     $("body").append($title);
     $("body").append($scoreList);
     $("body").append($chart);
+    window.setTimeout(function() {
+        window.location.href = "/round"
+    }, 10000);
 });
