@@ -167,7 +167,7 @@ app.post('/game_Table', function (request, response){
         "wpm" : wpm
     }
 
-    if((!username) || isNan(roundNum) || isNan(sentenceNum) || !(roundNum) || !(sentenceNum) || isNan(wpm) || !(wpm)){
+    if((!username) || isNaN(roundNum) || isNaN(sentenceNum) || !(roundNum) || !(sentenceNum) || isNaN(wpm) || !(wpm)){
         response.send("Something is wrong with the data");
     }
 
@@ -191,7 +191,7 @@ app.post('/stories_Table', function (request, response){
         "paragraphNum":paragraphNum
     }
 
-    if(!(storyName) || !(paragraph) || isNan(paragraphNum) || !(paragraphNum)){
+    if(!(storyName) || !(paragraph) || isNaN(paragraphNum) || !(paragraphNum)){
         response.send({"error":"Something is wrong with the data"});
     }
     else {
