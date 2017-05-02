@@ -9,7 +9,7 @@ var maxLine;
 var timer;
 var paragraphNum;
 var storyName;
-var curr_user;
+//var curr_user;
 
 function init()
 {   
@@ -19,7 +19,7 @@ function init()
     timer = Date.now();
     time = document.getElementById("time");
     time.innerHTML = 0 + " seconds";
-    //update_textboxes();
+    update_textboxes();
 }
 
 // function getUserInfo(){
@@ -86,13 +86,13 @@ function check_input()
         line.innerHTML = "You finished this round!";
         wpm = find_wpm((newTimer - timer) * 1000 * 60);
         $.get('/score?wpm=' + wpm);
-        sendToScore();
         currentLine = -1;
-
+        // sendToScore();
         return;
     }
 
     time = document.getElementById("time");
+    // see http://stackoverflow.com/questions/4256030/limit-the-amount-of-number-shown-after-a-decimal-place-in-javascript
     time.innerHTML = ((newTimer - timer) / 1000).toFixed(1) + " seconds";
 
     update_textboxes();
@@ -110,34 +110,24 @@ function clear_textbox(){
     document.getElementById("bottom_input").value = "";
 }
 
-/*function update_textboxes()
+function update_textboxes()
 {
-    $.get('/getscore?player=P1', function (P1progress) {
+//    $.get('/getscore?player=P1', function (P1progress) {
         topPlayer = document.getElementById("P1");
-        topPlayer.innerHTML = story[P1progress];});
-        // topPlayer.innerHTML = story[currentLine - 1];});
+//        topPlayer.innerHTML = story[P1progress];});
+        topPlayer.innerHTML = story[currentLine - 1]; //});
 
-    $.get('/getscore?player=P2', function (P2progress) {
+//    $.get('/getscore?player=P2', function (P2progress) {
         LeftPlayer = document.getElementById("P2");
-        LeftPlayer.innerHTML = story[P2progress];});
-        // topPlayer.innerHTML = story[currentLine - 1];});
+//        LeftPlayer.innerHTML = story[P2progress];});
+        LeftPlayer.innerHTML = story[currentLine - 1]; //});
 
-    $.get('/getscore?player=P3', function (P3progress) {
+//    $.get('/getscore?player=P3', function (P3progress) {
         RightPlayer = document.getElementById("P3");
-        RightPlayer.innerHTML = story[P3progress];});
-        // topPlayer.innerHTML = story[currentLine - 1];});
-}*/
+//        RightPlayer.innerHTML = story[P3progress];});
+        RightPlayer.innerHTML = story[currentLine - 1]; //});
+}
 
 function sendToScore (){
     window.location.href = "https://m3m3l0rd.herokuapp/score?username=" + mchow01;
 }
-
-
-
-// Things to do:
-    // ✓ keep track of user time
-    // ✓ redirect to the proper score page (at the end of round)
-    // ✓ adding in profile images (player icon and meme lord icon)
-    // - feeding in the stories
-    // - meme lord logic
-
