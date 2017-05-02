@@ -10,11 +10,10 @@
 - Geolocation - We wanted to determine player groups through geolocation (ie, find the four closest people who want to play). For prototype and testing purposes, though, we only have the project working for one person to type against themselves, and thus, are temporarily not using latitude and longitude.
 - Server-side persistence - We used a server to hold information about the game. There exists a game_Table which holds all the information about each user, what story they're competing on, which paragraph they're on, which line number they're on, and their wpm. We have another table called stories_Table on the server which holds the stories in paragraph chunks so they can be feeded to the front-end paragraph by paragraph. We used node.js and MongoDB to make this all happen.
 - Reporting with charts and graphs - Given a wpm from the round, the /score page appears between rounds and will give a comparison between the typing speeds of all players and their player standings on a chart.
-- Meme logic - if user is memelord, user has the power to spam all the other users with a meme to distract them from typing. We were unable to directly implement meme logic with our one person prototype; however, you can see our memelogic.js to see evidence of what could possibly work.
+- Meme logic - if user is memelord, user has the power to spam all the other users with a meme to distract them from typing. We still need to incorprate full meme logic; however, as of now, a meme will show up for a single player every five seconds to distract the user. It will test your ability to deal with memes and typing ability!
 
 **Data our prototype uses and collects**
-- Prewritten stories for players to type, split into paragraphs. One paragraph denotes one round. Each sentence will be automatically directed to the next when the user finishes each sentence correctly.
--- Each insertion to the stories_Table includes story name, paragraph number, and sentence number
+- Prewritten stories for players to type, split into paragraphs. One paragraph denotes one round. Each sentence will be automatically directed to the next when the user finishes each sentence correctly. Each insertion to the stories_Table includes story name, paragraph number, and sentence number
 - Geolocation info from users - When fully implemented, latitude and longitude will be used at the beginning of the game to match people.
 - GameID - if there is more than one game being played with the same story, the server needs to know so it doesn't mix up games and information
 - Scores between rounds - this includes wpm for user at each round
