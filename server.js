@@ -1,10 +1,6 @@
 // server.js
 // Purpose: to hold the tables in the database and all the get/post requests
 
-var list = ['4thWallBreak', 'DumbGuitarSolo', 'Officeish', 'Short-Lined', 'CheesyPickupLines'];
-var story = "";
-
-
 var express = require('express');
 var assert = require('assert');
 // Required if we need to use HTTP query or post parameters
@@ -65,18 +61,14 @@ app.get('/ready', function(request, response) {
     response.header("Access-Control-Allow-Origin", "*");
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    db.collection('game', function(err, collection) {
+    db.collection('game_Table', function(err, collection) {
         if (err) {
             response.send("Error!");
         }
         else {
             collection.find().toArray(function(err, results) {
                 if (results.length >= 2) { // checks if enough people are ready to play
-                    story = list[Math.floor(Math.random()*list.length)]; // randomize story here
-                    
-                    collection.insert({"username" : });
-
-                    collection.find().toArray(function(err, results) {
+                        collection.find().toArray(function(err, results) {
                         // first four people added to database will get to play
                         response.send( {"P1" : results[0], "P2" : results[1], "P3" : results[2], "P4" : results[3]} );
                     });
