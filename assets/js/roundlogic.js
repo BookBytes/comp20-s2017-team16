@@ -2,7 +2,7 @@
 /* uses listeners to update user typed data for all 4 users and presents it on screen */
 /* updates sentence in the middle on user #'s screen when that user has entered the last line correctly */
 
-var paragraph = "Become the m3m3l0rd, and spam the ever loving you-know-what out of your friends. Play mind games, talk trash, any measures you can take to out-compete your friends must be taken. If the youtube comments on my eighth grade spanish project have taught me anything, it is this: there are no friends on the internet. There exist only those who win at m3m3l0rd and those who lose. It is the modern day hunger games, and you will win." // for test purposes only
+var paragraph = "Play mind games, talk trash, and take any measures you can to out-compete your friends. If the youtube comments on my eighth grade spanish project have taught me anything, it is this: there are no friends on the internet. There exist only those who win at m3m3l0rd and those who lose." // for test purposes only
 var story;
 var currentLine = 1;
 var maxLine;
@@ -78,8 +78,13 @@ function check_input()
     else if (currentLine > maxLine) {
         line.innerHTML = "You finished this round!";
 	    wpm = find_wpm((newTimer - timer) * 1000 * 60);
+<<<<<<< HEAD
 	    $.get('/score?wpm=' + wpm);
+=======
+	    $.get('/score?wpm=' + wpm + '&username=' + username);
+>>>>>>> 2ff2ab9ec712ac4d202176ab36c0b1a12c046956
         currentLine = -1;
+        sendToScore();
 	    return;
     }
 
@@ -117,6 +122,10 @@ function update_textboxes()
         RightPlayer = document.getElementById("P3");
         RightPlayer.innerHTML = story[P3progress];});
         // topPlayer.innerHTML = story[currentLine - 1];});
+}
+
+function sendToScore (){
+    window.location.href = "https://m3m3l0rd.herokuapp/score?username=" + curr_user;
 }
 
 
