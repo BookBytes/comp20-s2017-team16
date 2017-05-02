@@ -13,7 +13,7 @@ var curr_user;
 
 function init()
 {   
-    getUserInfo();
+    // getUserInfo();
     // getParagraph();
     parse_story(); // splits paragraph into lines
     timer = Date.now();
@@ -22,11 +22,11 @@ function init()
     //update_textboxes();
 }
 
-function getUserInfo(){
-    $.get('/game_Table', function(data){
-        curr_user = data.body.username;
-    });
-}
+// function getUserInfo(){
+//     $.get('/game_Table', function(data){
+//         curr_user = data.body.username;
+//     });
+// }
 // function getParagraph()
 // {
 //     $.get('/stories_Table', function (data){
@@ -129,7 +129,7 @@ function clear_textbox(){
 }*/
 
 function sendToScore (){
-    window.location.href = "https://m3m3l0rd.herokuapp/score?username=" + curr_user;
+    window.location.href = "https://m3m3l0rd.herokuapp/score?username=" + mchow01;
 }
 
 
