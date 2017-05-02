@@ -1,7 +1,7 @@
 // memelogic
 
 var memePlacement = document.getElementById("body");
-var $center = $('center').html;
+var $center = $('center').innerHTML;
 var memelord = false;
 
 var randNum = function getRandomInt(min, max) {
@@ -33,8 +33,8 @@ function memelordStatus() {
 // need to add server time
 function sendMeme (randomNum) {
     var img = $('<img>', {id: "image", src: "../img/meme"+randomNum+".jpg", alt: "memeattack!"});
-    $("center").innerHTML(img);
+    $("center").value(img);
     setTimeout(function () {
-        $("center").innerHTML($center);
+        $("center").value($center);
     }, 3000);
 }
